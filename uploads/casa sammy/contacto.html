@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Contacto · Casa de Sammy</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Italiana&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body data-screen-label="Contacto">
+<div id="site-head"></div>
+
+<section class="page-hero">
+  <div class="container">
+    <div class="eyebrow">07 · <span data-lang="es">Encontrarnos</span><span data-lang="en">Find us</span></div>
+    <h1><span data-lang="es"><em>Contacto</em>.</span><span data-lang="en"><em>Contact</em>.</span></h1>
+    <p class="lede"><span data-lang="es">Al final de un camino de grava, entre dos castaños viejos. Más fácil de lo que parece.</span><span data-lang="en">At the end of a gravel path, between two old chestnut trees. Easier than it sounds.</span></p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container" style="display:grid;grid-template-columns:1.1fr .9fr;gap:60px;align-items:start">
+    <!-- Map placeholder -->
+    <div class="ph ph-forest" style="aspect-ratio:4/3;border-radius:3px;min-height:500px;position:relative">
+      <!-- Stylized map lines -->
+      <svg style="position:absolute;inset:0;width:100%;height:100%;z-index:2" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice">
+        <g fill="none" stroke="rgba(244,239,228,.25)" stroke-width="1">
+          <path d="M-20 80 Q 100 60 200 90 T 420 110"/>
+          <path d="M-20 140 Q 80 130 180 160 T 420 180"/>
+          <path d="M-20 200 Q 110 190 220 220 T 420 230"/>
+          <path d="M40 -20 Q 80 100 60 180 T 100 320"/>
+          <path d="M200 -20 Q 230 80 200 160 T 240 320"/>
+        </g>
+        <!-- Road -->
+        <path d="M-20 260 Q 100 220 200 200 Q 280 190 420 160" fill="none" stroke="rgba(184,138,94,.7)" stroke-width="2" stroke-dasharray="4 4"/>
+        <!-- Marker -->
+        <g transform="translate(220 195)">
+          <circle r="22" fill="rgba(184,138,94,.2)"/>
+          <circle r="12" fill="#B88A5E"/>
+          <circle r="5" fill="#F4EFE4"/>
+        </g>
+        <text x="250" y="200" font-family="Italiana,serif" font-size="10" letter-spacing="3" fill="#F4EFE4">CASA DE SAMMY</text>
+      </svg>
+      <div class="ph-label" style="z-index:5"><span data-lang="es">Valle de Lozoya · km 12</span><span data-lang="en">Valle de Lozoya · km 12</span></div>
+    </div>
+
+    <div>
+      <div style="padding-bottom:28px;border-bottom:1px solid rgba(20,22,18,.12)">
+        <div class="eyebrow"><span data-lang="es">Dirección</span><span data-lang="en">Address</span></div>
+        <p class="display" style="font-size:28px;color:var(--forest);margin-top:10px;line-height:1.2">
+          Carretera de la Sierra, km 12<br/>
+          Valle de Lozoya, 28741<br/>
+          Madrid · España
+        </p>
+      </div>
+
+      <div style="padding:28px 0;border-bottom:1px solid rgba(20,22,18,.12)">
+        <div class="eyebrow"><span data-lang="es">Horario</span><span data-lang="en">Hours</span></div>
+        <div style="margin-top:14px;display:grid;grid-template-columns:auto 1fr;gap:8px 24px;font-family:'Cormorant Garamond',serif;font-size:20px;color:var(--forest)">
+          <span class="italic" style="color:var(--stone);font-size:14px"><span data-lang="es">Jue – Dom</span><span data-lang="en">Thu – Sun</span></span><span>10:00 — 20:00</span>
+          <span class="italic" style="color:var(--stone);font-size:14px"><span data-lang="es">Lun – Mié</span><span data-lang="en">Mon – Wed</span></span><span class="italic" style="color:var(--clay)"><span data-lang="es">Cerrado</span><span data-lang="en">Closed</span></span>
+        </div>
+      </div>
+
+      <div style="padding:28px 0;border-bottom:1px solid rgba(20,22,18,.12)">
+        <div class="eyebrow"><span data-lang="es">Contacto directo</span><span data-lang="en">Direct contact</span></div>
+        <div style="margin-top:14px;display:flex;flex-direction:column;gap:10px">
+          <a href="https://wa.me/34612840021" class="italic" style="font-size:22px;color:var(--forest)">WhatsApp — +34 612 84 00 21</a>
+          <a href="tel:+34612840021" class="italic" style="font-size:22px;color:var(--forest)"><span data-lang="es">Teléfono</span><span data-lang="en">Phone</span> — +34 612 84 00 21</a>
+          <a href="mailto:hola@casadesammy.es" class="italic" style="font-size:22px;color:var(--forest)">hola@casadesammy.es</a>
+          <a href="#" class="italic" style="font-size:22px;color:var(--forest)">Instagram — @casadesammy</a>
+        </div>
+      </div>
+
+      <div style="padding:28px 0">
+        <div class="eyebrow"><span data-lang="es">Cómo llegar</span><span data-lang="en">Directions</span></div>
+        <p class="body" style="margin-top:14px"><span data-lang="es">90 minutos desde Madrid. Sal por la M-607 hacia Navacerrada, sigue por la M-604 hasta Lozoya. Pasa el pueblo y gira en la primera curva cerrada a la derecha — hay un buzón de madera.</span><span data-lang="en">90 minutes from Madrid. Take the M-607 toward Navacerrada, follow the M-604 to Lozoya. Pass the village and turn right at the first sharp curve — there's a wooden mailbox.</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:var(--forest-deep);color:var(--cream);text-align:center">
+  <div class="wrap-narrow">
+    <p class="display" style="font-size:48px;line-height:1.2;color:var(--cream);text-wrap:pretty">
+      <span data-lang="es">"Si te pierdes, <em>no importa</em>. Llama, y te guiamos desde el último cruce."</span>
+      <span data-lang="en">"If you get lost, <em>it doesn't matter</em>. Call us, and we'll guide you from the last crossing."</span>
+    </p>
+    <div style="margin-top:32px;font-family:'Italiana',serif;font-size:11px;letter-spacing:.34em;color:var(--sage)">— SAMMY</div>
+  </div>
+</section>
+
+<div id="site-foot"></div>
+<script src="partials.js"></script>
+<script>CasaSammy.mount(null);</script>
+</body>
+</html>

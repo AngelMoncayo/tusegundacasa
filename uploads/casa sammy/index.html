@@ -1,103 +1,255 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
 <head>
 <meta charset="utf-8" />
-<title>El Síndrome de la Vigencia — Index</title>
-<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Casa de Sammy — tu segunda casa</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400&family=Cormorant+Garamond:ital,wght@0,400;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-<style>
-  :root{
-    --ink:#0b1220; --amber:#c98a2b; --bone:#ece4d3; --paper:#f2ecdf;
-    --line:rgba(11,18,32,.18); --muted:#6a6458;
-  }
-  html,body{margin:0;padding:0;}
-  body{
-    font-family:"Cormorant Garamond", Georgia, serif; color:var(--ink);
-    background:
-      radial-gradient(1200px 800px at 20% 10%, #f6f0e2 0%, transparent 60%),
-      radial-gradient(1200px 800px at 80% 90%, #ece4d3 0%, transparent 60%),
-      var(--paper);
-    min-height:100vh; padding:64px 40px;
-  }
-  .wrap{max-width:960px; margin:0 auto;}
-  .kicker{
-    font-family:"JetBrains Mono", monospace; font-size:10px; letter-spacing:.3em;
-    text-transform:uppercase; color:var(--muted); margin-bottom:24px;
-  }
-  .kicker .dot{display:inline-block;width:8px;height:8px;background:var(--amber);border-radius:50%;margin-right:10px;vertical-align:middle;transform:translateY(-1px);}
-  h1{
-    font-family:"Bodoni Moda", serif; font-weight:500;
-    font-size:clamp(44px, 6vw, 72px); line-height:.95; letter-spacing:-0.02em;
-    margin:0 0 12px;
-  }
-  h1 em{font-style:italic; font-weight:400;}
-  .lede{font-style:italic; font-size:20px; max-width:620px; color:#3a352a; margin:0 0 48px;}
-
-  .cards{display:grid; grid-template-columns:1fr 1fr; gap:24px;}
-  .card{
-    display:block; text-decoration:none; color:inherit;
-    background:#fbf6ea; border:1px solid var(--line);
-    padding:28px 28px 24px; position:relative; overflow:hidden;
-    transition:transform .3s ease, box-shadow .3s ease;
-    box-shadow:0 10px 24px rgba(11,18,32,.08);
-  }
-  .card:hover{transform:translateY(-3px); box-shadow:0 18px 36px rgba(11,18,32,.14);}
-  .card .num{
-    font-family:"JetBrains Mono", monospace; font-size:10px; letter-spacing:.25em;
-    text-transform:uppercase; color:var(--muted); margin-bottom:20px;
-  }
-  .card h2{
-    font-family:"Bodoni Moda", serif; font-weight:500; font-style:italic;
-    font-size:32px; margin:0 0 8px; letter-spacing:-0.01em;
-  }
-  .card p{margin:0 0 20px; font-size:15px; color:#3a352a; max-width:40ch;}
-  .card .go{
-    font-family:"JetBrains Mono", monospace; font-size:10px; letter-spacing:.22em;
-    text-transform:uppercase; color:var(--ink);
-    display:inline-flex; align-items:center; gap:8px;
-  }
-  .card .go::after{content:"→";}
-  .card::before{
-    content:""; position:absolute; left:28px; top:20px; width:22px; height:3px;
-    background:var(--amber);
-  }
-
-  .foot{
-    margin-top:64px; padding-top:20px; border-top:1px solid var(--line);
-    font-family:"JetBrains Mono", monospace; font-size:10px; letter-spacing:.22em;
-    text-transform:uppercase; color:var(--muted);
-    display:flex; justify-content:space-between;
-  }
-  @media (max-width:720px){.cards{grid-template-columns:1fr;}}
-</style>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Italiana&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
 </head>
-<body>
-<div class="wrap">
-  <div class="kicker"><span class="dot"></span>Casa Sammy · Jacket design · Rev 01</div>
-  <h1>El Síndrome<br/>de la <em>Vigencia</em></h1>
-  <p class="lede">Ángel Moncayo Riofrío — literary essay. Two cover directions plus a one-page art brief.</p>
+<body data-screen-label="Home">
 
-  <div class="cards">
-    <a class="card" href="Cover Mockups.html">
-      <div class="num">01 · Covers</div>
-      <h2>Two jacket directions</h2>
-      <p>Front + spine. "The quiet frame" (light, restrained) and "Into the dark" (cinematic, full-bleed).</p>
-      <span class="go">Open</span>
-    </a>
-    <a class="card" href="Art Direction Brief.html">
-      <div class="num">02 · Art brief</div>
-      <h2>One-page direction</h2>
-      <p>Image description, mood, palette, composition diagram, type specimen, do &amp; don't.</p>
-      <span class="go">Open</span>
-    </a>
+<div id="site-head"></div>
+
+<!-- HERO -->
+<section style="position:relative;overflow:hidden">
+  <div class="container" style="display:grid;grid-template-columns:1.05fr .95fr;gap:48px;padding-top:70px;padding-bottom:90px;align-items:center">
+    <div>
+      <div class="eyebrow" style="margin-bottom:28px">
+        <span data-lang="es">Spa · Retiro · Ritual · Sierra de Madrid</span>
+        <span data-lang="en">Spa · Retreat · Ritual · Sierra de Madrid</span>
+      </div>
+      <h1 class="display" style="font-size:128px">
+        <span data-lang="es">Respira.<br/><em>Descansa.</em><br/>Vuelve.</span>
+        <span data-lang="en">Breathe.<br/><em>Rest.</em><br/>Return.</span>
+      </h1>
+      <p class="italic" style="font-size:26px;color:var(--stone);margin-top:32px;max-width:500px;line-height:1.35">
+        <span data-lang="es">Un refugio lento en la montaña, a noventa minutos de la ciudad. Tu segunda casa.</span>
+        <span data-lang="en">A slow refuge in the mountains, ninety minutes from the city. Your second home.</span>
+      </p>
+      <div style="display:flex;gap:14px;margin-top:44px;flex-wrap:wrap">
+        <a href="reservar.html" class="btn btn-forest btn-arrow">
+          <span data-lang="es">Reservar ritual</span><span data-lang="en">Book a ritual</span>
+        </a>
+        <a href="rituales.html" class="btn btn-ghost">
+          <span data-lang="es">Ver la carta</span><span data-lang="en">See the menu</span>
+        </a>
+      </div>
+    </div>
+    <div class="ph ph-hero" style="aspect-ratio:4/5;border-radius:3px;min-height:560px">
+      <div class="sun"></div>
+      <div class="ridge"></div>
+      <div class="ridge-front"></div>
+      <div style="position:absolute;top:28px;left:28px;right:28px;z-index:5;display:flex;justify-content:space-between;color:rgba(244,239,228,.7);font-family:'Italiana',serif;font-size:10px;letter-spacing:.32em">
+        <span>VALLE DE LOZOYA</span><span>40°53'N · 3°49'W</span>
+      </div>
+      <div class="ph-label" style="z-index:5">
+        <span data-lang="es">Amanecer desde el patio · primavera</span>
+        <span data-lang="en">Sunrise from the courtyard · spring</span>
+      </div>
+    </div>
   </div>
+</section>
 
-  <div class="foot">
-    <div>Overhead dinner · three phones · melancholic</div>
-    <div>Apr 2026</div>
+<!-- MARQUEE -->
+<div class="marquee">
+  <div class="marquee-track">
+    <span>tu segunda casa <span class="dot"></span> your second home <span class="dot"></span> respira <span class="dot"></span> breathe <span class="dot"></span> descansa <span class="dot"></span> rest <span class="dot"></span> vuelve <span class="dot"></span> return <span class="dot"></span></span>
+    <span>tu segunda casa <span class="dot"></span> your second home <span class="dot"></span> respira <span class="dot"></span> breathe <span class="dot"></span> descansa <span class="dot"></span> rest <span class="dot"></span> vuelve <span class="dot"></span> return <span class="dot"></span></span>
   </div>
 </div>
+
+<!-- MANIFESTO -->
+<section class="section">
+  <div class="wrap-narrow" style="text-align:center">
+    <div class="eyebrow" style="margin-bottom:24px"><span data-lang="es">Nuestra filosofía</span><span data-lang="en">Our philosophy</span></div>
+    <p class="display" style="font-size:52px;line-height:1.15;color:var(--forest);text-wrap:pretty">
+      <span data-lang="es">Dejas el coche en la grava. El aire huele a pino mojado y a romero. Una puerta de madera se abre sola, <em>como si ya te estuviera esperando</em>. Aquí el tiempo se comporta distinto.</span>
+      <span data-lang="en">You leave the car on the gravel. The air smells of wet pine and rosemary. A wooden door opens on its own, <em>as if it had been waiting for you</em>. Here, time behaves differently.</span>
+    </p>
+  </div>
+</section>
+
+<!-- RITUALES PREVIEW -->
+<section class="section" style="background:var(--forest-deep);color:var(--cream)">
+  <div class="container">
+    <div class="section-head" style="border-color:rgba(244,239,228,.15)">
+      <div>
+        <div class="eyebrow" style="color:var(--sage)"><span data-lang="es">01 · Rituales</span><span data-lang="en">01 · Rituals</span></div>
+        <h2 style="color:var(--cream);margin-top:10px">
+          <span data-lang="es">Seis <em>rituales</em>, lentos.</span>
+          <span data-lang="en">Six <em>rituals</em>, slow.</span>
+        </h2>
+      </div>
+      <a href="rituales.html" class="btn btn-cream btn-arrow"><span data-lang="es">Ver la carta</span><span data-lang="en">See the menu</span></a>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:28px">
+      <a href="rituales.html" class="ritual-card">
+        <div class="ph ph-water" style="aspect-ratio:4/5;border-radius:3px">
+          <div class="ph-label">Nº 01</div>
+        </div>
+        <div style="padding:24px 4px">
+          <div style="display:flex;justify-content:space-between;align-items:baseline">
+            <h3 class="display" style="font-size:34px;color:var(--cream)"><span data-lang="es">Baño de <em>niebla</em></span><span data-lang="en">Mist <em>bath</em></span></h3>
+            <span class="eyebrow" style="color:var(--sage)">90 min</span>
+          </div>
+          <p class="body-sm" style="color:rgba(244,239,228,.65);margin-top:12px">
+            <span data-lang="es">Vapor de eucalipto, agua tibia, silencio. Para desenredar la semana.</span>
+            <span data-lang="en">Eucalyptus steam, warm water, silence. To untangle the week.</span>
+          </p>
+        </div>
+      </a>
+      <a href="rituales.html" class="ritual-card">
+        <div class="ph ph-stone" style="aspect-ratio:4/5;border-radius:3px">
+          <div class="ph-label">Nº 02</div>
+        </div>
+        <div style="padding:24px 4px">
+          <div style="display:flex;justify-content:space-between;align-items:baseline">
+            <h3 class="display" style="font-size:34px;color:var(--cream)"><span data-lang="es">Piedra de <em>río</em></span><span data-lang="en">River <em>stone</em></span></h3>
+            <span class="eyebrow" style="color:var(--sage)">75 min</span>
+          </div>
+          <p class="body-sm" style="color:rgba(244,239,228,.65);margin-top:12px">
+            <span data-lang="es">Piedras tibias de basalto sobre la espalda, aceite de romero.</span>
+            <span data-lang="en">Warm basalt stones along the spine, rosemary oil.</span>
+          </p>
+        </div>
+      </a>
+      <a href="rituales.html" class="ritual-card">
+        <div class="ph ph-herb" style="aspect-ratio:4/5;border-radius:3px">
+          <div class="ph-label">Nº 03</div>
+        </div>
+        <div style="padding:24px 4px">
+          <div style="display:flex;justify-content:space-between;align-items:baseline">
+            <h3 class="display" style="font-size:34px;color:var(--cream)"><span data-lang="es">Segundo <em>sueño</em></span><span data-lang="en">Second <em>sleep</em></span></h3>
+            <span class="eyebrow" style="color:var(--sage)">150 min</span>
+          </div>
+          <p class="body-sm" style="color:rgba(244,239,228,.65);margin-top:12px">
+            <span data-lang="es">Masaje, infusión, y una hora de siesta en la cabaña del bosque.</span>
+            <span data-lang="en">Massage, infusion, and an hour of naptime in the forest cabin.</span>
+          </p>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- LA CASA SPLIT -->
+<section class="section">
+  <div class="container" style="display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center">
+    <div class="ph ph-interior" style="aspect-ratio:4/5;border-radius:3px;min-height:540px">
+      <div class="ph-label"><span data-lang="es">Salón de fuego · enero</span><span data-lang="en">Fire room · January</span></div>
+    </div>
+    <div>
+      <div class="eyebrow"><span data-lang="es">02 · La casa</span><span data-lang="en">02 · The house</span></div>
+      <h2 class="display" style="font-size:64px;color:var(--forest);margin-top:14px">
+        <span data-lang="es">Una casa de piedra,<br/>más <em>vieja</em> que el camino.</span>
+        <span data-lang="en">A stone house,<br/><em>older</em> than the road.</span>
+      </h2>
+      <p class="body" style="margin-top:24px;max-width:500px">
+        <span data-lang="es">Restauramos un cortijo del siglo XVIII con las manos limpias y materiales locales. Cal, madera de castaño, lino. Doce tratamientos, cinco habitaciones, un huerto de romero. Nada más.</span>
+        <span data-lang="en">We restored an 18th-century cortijo with clean hands and local materials. Lime, chestnut, linen. Twelve treatments, five rooms, a garden of rosemary. Nothing more.</span>
+      </p>
+      <a href="la-casa.html" class="btn btn-ghost btn-arrow" style="margin-top:32px">
+        <span data-lang="es">Conocer la casa</span><span data-lang="en">About the house</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ESTANCIA -->
+<section class="section" style="background:var(--bone)">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow"><span data-lang="es">03 · Estancia</span><span data-lang="en">03 · Stay</span></div>
+        <h2 class="display" style="font-size:56px;color:var(--forest);margin-top:10px">
+          <span data-lang="es">Duerme en la <em>casa</em>.</span>
+          <span data-lang="en">Sleep in the <em>house</em>.</span>
+        </h2>
+      </div>
+      <a href="estancia.html" class="btn btn-ghost btn-arrow"><span data-lang="es">Ver habitaciones</span><span data-lang="en">See rooms</span></a>
+    </div>
+
+    <div style="display:grid;grid-template-columns:2fr 1fr 1fr;gap:24px">
+      <div class="ph ph-linen" style="aspect-ratio:3/2;border-radius:3px">
+        <div style="position:absolute;top:24px;left:24px;z-index:5">
+          <div class="sig" style="font-size:10px;color:var(--forest);opacity:.6">HABITACIÓN 01</div>
+          <div class="display" style="font-size:40px;color:var(--forest);margin-top:6px">Tibia</div>
+        </div>
+      </div>
+      <div class="ph ph-wood" style="aspect-ratio:3/4;border-radius:3px">
+        <div class="ph-label">Nº 02 · Hoguera</div>
+      </div>
+      <div class="ph ph-forest" style="aspect-ratio:3/4;border-radius:3px">
+        <div class="ph-label">Nº 03 · Pino</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- APOTHECARY -->
+<section class="section">
+  <div class="container" style="display:grid;grid-template-columns:1fr 1.1fr;gap:60px;align-items:center">
+    <div>
+      <div class="eyebrow"><span data-lang="es">04 · Apothecary</span><span data-lang="en">04 · Apothecary</span></div>
+      <h2 class="display" style="font-size:64px;color:var(--forest);margin-top:14px">
+        <span data-lang="es">Llévate <em>un poco</em><br/>de la sierra.</span>
+        <span data-lang="en">Take <em>a little</em><br/>of the mountain home.</span>
+      </h2>
+      <p class="body" style="margin-top:24px;max-width:460px">
+        <span data-lang="es">Aceites, sales y tónicos elaborados a mano en nuestra casita de hierbas. En tiradas pequeñas, con lo que da la temporada.</span>
+        <span data-lang="en">Hand-blended oils, salts, and tonics from our herb house. Small batches, whatever the season gives us.</span>
+      </p>
+      <a href="apothecary.html" class="btn btn-clay btn-arrow" style="margin-top:32px">
+        <span data-lang="es">Ver la tienda</span><span data-lang="en">Shop</span>
+      </a>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px">
+      <div class="ph ph-clay" style="aspect-ratio:2/3;border-radius:3px"><div class="ph-label">Nº 01</div></div>
+      <div class="ph ph-forest" style="aspect-ratio:2/3;border-radius:3px;margin-top:40px"><div class="ph-label">Nº 02</div></div>
+      <div class="ph ph-herb" style="aspect-ratio:2/3;border-radius:3px"><div class="ph-label">Nº 03</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONY -->
+<section class="section" style="background:var(--clay);color:var(--cream)">
+  <div class="wrap-narrow" style="text-align:center;padding-top:40px;padding-bottom:40px">
+    <div class="sig" style="font-size:11px;letter-spacing:.4em;color:rgba(244,239,228,.7);margin-bottom:28px">DIARIO · MAR 2026</div>
+    <p class="display" style="font-size:48px;line-height:1.2;color:var(--cream);text-wrap:pretty">
+      <span data-lang="es">"Salí de Casa de Sammy <em style="color:var(--forest-deep)">como si hubiera dormido tres noches</em>, pero sólo estuve una tarde."</span>
+      <span data-lang="en">"I left Casa de Sammy <em style="color:var(--forest-deep)">as if I'd slept three nights</em>, but I was only there one afternoon."</span>
+    </p>
+    <div style="margin-top:40px;font-family:'Italiana',serif;font-size:11px;letter-spacing:.34em">— LUCÍA M., MADRID</div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="section" style="background:var(--forest-deep);color:var(--cream);text-align:center;padding:120px 0">
+  <div class="wrap-narrow">
+    <div class="eyebrow" style="color:var(--sage)">Reservar</div>
+    <h2 class="display" style="font-size:92px;margin-top:18px;color:var(--cream)">
+      <span data-lang="es">Te estamos<br/><em>esperando</em>.</span>
+      <span data-lang="en">We're <em>waiting</em><br/>for you.</span>
+    </h2>
+    <p class="italic" style="font-size:22px;color:var(--bone);opacity:.75;margin-top:24px">
+      <span data-lang="es">Reservas por WhatsApp o teléfono — respondemos en horas.</span>
+      <span data-lang="en">Book by WhatsApp or phone — we reply within hours.</span>
+    </p>
+    <div style="display:flex;gap:14px;justify-content:center;margin-top:42px;flex-wrap:wrap">
+      <a href="https://wa.me/34612840021" class="btn btn-clay">WhatsApp · +34 612 84 00 21</a>
+      <a href="tel:+34612840021" class="btn btn-ghost" style="border-color:var(--cream);color:var(--cream)">
+        <span data-lang="es">Llamar</span><span data-lang="en">Call</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<div id="site-foot"></div>
+<script src="partials.js"></script>
+<script>CasaSammy.mount('home');</script>
 </body>
 </html>
