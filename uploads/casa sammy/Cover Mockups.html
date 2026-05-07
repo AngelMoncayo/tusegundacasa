@@ -1,0 +1,531 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<title>El Síndrome de la Vigencia — Cover Mockups</title>
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,600;0,6..96,700;0,6..96,800;1,6..96,400&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --ink:        #0b1220;            /* near-black navy */
+    --navy:       #0f1a2e;            /* deep navy */
+    --navy-2:     #1a2744;
+    --charcoal:   #1f2024;
+    --amber:      #c98a2b;            /* muted amber */
+    --amber-soft: #d7a053;
+    --bone:       #ece4d3;            /* warm off-white */
+    --bone-2:     #e3dac5;
+    --paper:      #f2ecdf;            /* page bg */
+    --paper-2:    #ebe3d2;
+    --line:       rgba(11,18,32,.18);
+  }
+
+  html,body{margin:0;padding:0;}
+  body{
+    font-family:"Cormorant Garamond", Georgia, serif;
+    background:
+      radial-gradient(1200px 800px at 20% 10%, #f6f0e2 0%, transparent 60%),
+      radial-gradient(1200px 800px at 80% 90%, #ece4d3 0%, transparent 60%),
+      var(--paper);
+    color:var(--ink);
+    min-height:100vh;
+    padding:56px 40px 120px;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  /* ——— Page header ——— */
+  .page-head{
+    max-width:1280px; margin:0 auto 48px;
+    display:grid; grid-template-columns:1fr auto; align-items:end; gap:24px;
+    border-bottom:1px solid var(--line); padding-bottom:20px;
+  }
+  .page-head h1{
+    font-family:"Bodoni Moda", serif; font-weight:500; font-style:italic;
+    margin:0; font-size:clamp(28px,3.2vw,44px); letter-spacing:-0.01em;
+  }
+  .page-head .kicker{
+    font-family:"JetBrains Mono", monospace; font-size:11px; letter-spacing:.18em;
+    text-transform:uppercase; color:#6a6458; margin-bottom:6px;
+  }
+  .page-head .meta{
+    font-family:"JetBrains Mono", monospace; font-size:11px; letter-spacing:.14em;
+    text-transform:uppercase; color:#6a6458; text-align:right; line-height:1.8;
+  }
+  .page-head .meta b{color:var(--ink); font-weight:500;}
+
+  .nav{
+    max-width:1280px; margin:0 auto 40px;
+    display:flex; gap:8px; font-family:"JetBrains Mono", monospace;
+    font-size:11px; letter-spacing:.14em; text-transform:uppercase;
+  }
+  .nav a{
+    color:#6a6458; text-decoration:none; padding:6px 10px; border:1px solid var(--line);
+    border-radius:999px; background:rgba(255,255,255,.4);
+  }
+  .nav a.active{color:var(--ink); border-color:var(--ink); background:transparent;}
+
+  /* ——— Variation scaffolding ——— */
+  .variation{
+    max-width:1280px; margin:0 auto 96px;
+  }
+  .variation-head{
+    display:flex; justify-content:space-between; align-items:baseline;
+    margin-bottom:28px; gap:24px; flex-wrap:wrap;
+  }
+  .variation-head .label{
+    font-family:"JetBrains Mono", monospace; font-size:11px; letter-spacing:.22em;
+    text-transform:uppercase; color:#6a6458;
+  }
+  .variation-head h2{
+    font-family:"Bodoni Moda", serif; font-weight:500; font-style:italic;
+    margin:6px 0 0; font-size:32px; letter-spacing:-0.01em;
+  }
+  .variation-head .note{
+    font-family:"Cormorant Garamond", serif; font-style:italic; color:#4a4638;
+    max-width:420px; font-size:15px; line-height:1.5;
+  }
+
+  /* ——— Jacket (spine + front) ——— */
+  .jacket{
+    display:flex; align-items:stretch; justify-content:center;
+    gap:0;
+    filter: drop-shadow(0 30px 60px rgba(11,18,32,.35)) drop-shadow(0 6px 14px rgba(11,18,32,.25));
+  }
+  .spine{
+    width:72px; flex:0 0 72px;
+    display:flex; flex-direction:column; align-items:center; justify-content:space-between;
+    padding:36px 0;
+    position:relative;
+  }
+  .spine::after{
+    /* subtle fold shadow between spine and front */
+    content:""; position:absolute; top:0; right:0; bottom:0; width:10px;
+    background:linear-gradient(to right, rgba(0,0,0,.25), transparent);
+    pointer-events:none;
+  }
+  .spine-title{
+    writing-mode:vertical-rl; transform:rotate(180deg);
+    font-family:"Bodoni Moda", serif; font-weight:500;
+    font-size:16px; letter-spacing:.02em;
+  }
+  .spine-author{
+    writing-mode:vertical-rl; transform:rotate(180deg);
+    font-family:"Cormorant Garamond", serif; font-style:italic;
+    font-size:13px; letter-spacing:.04em;
+  }
+  .spine-logo{
+    font-family:"JetBrains Mono", monospace; font-size:9px; letter-spacing:.2em;
+    text-transform:uppercase;
+  }
+
+  .cover{
+    width:480px; height:720px;
+    position:relative; overflow:hidden;
+  }
+
+  /* ——— Shared image placeholder ——— */
+  .scene{
+    position:relative; width:100%; height:100%;
+    background:
+      radial-gradient(ellipse 60% 45% at 50% 58%, #1a2744 0%, #0b1220 55%, #05070f 100%);
+    overflow:hidden;
+  }
+  /* soft amber warm glow from imagined candle/food */
+  .scene::before{
+    content:""; position:absolute; inset:0;
+    background:
+      radial-gradient(ellipse 18% 12% at 50% 62%, rgba(201,138,43,.28), transparent 70%),
+      radial-gradient(ellipse 14% 9% at 35% 58%, rgba(215,160,83,.18), transparent 70%),
+      radial-gradient(ellipse 14% 9% at 65% 58%, rgba(215,160,83,.15), transparent 70%);
+    mix-blend-mode:screen;
+  }
+  /* cold bluish screen glows on faces */
+  .scene::after{
+    content:""; position:absolute; inset:0;
+    background:
+      radial-gradient(ellipse 8% 6% at 28% 48%, rgba(140,190,255,.55), transparent 70%),
+      radial-gradient(ellipse 9% 7% at 50% 44%, rgba(160,200,255,.55), transparent 70%),
+      radial-gradient(ellipse 8% 6% at 72% 48%, rgba(140,190,255,.55), transparent 70%);
+    mix-blend-mode:screen;
+  }
+  /* very subtle grain */
+  .grain{
+    position:absolute; inset:0; pointer-events:none;
+    opacity:.18; mix-blend-mode:overlay;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.55 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  }
+
+  /* overhead table scene — pure CSS schematic as placeholder */
+  .table-scene{
+    position:absolute; inset:0;
+    display:grid; place-items:center;
+  }
+  .table-top{
+    position:relative;
+    width:78%; aspect-ratio: 4/5;
+    background:
+      repeating-linear-gradient(90deg, rgba(60,40,20,.0) 0 22px, rgba(40,25,10,.25) 22px 23px),
+      linear-gradient(180deg, #2a1c10 0%, #1a1108 100%);
+    border-radius:6px;
+    box-shadow:
+      0 0 0 1px rgba(0,0,0,.4),
+      0 40px 80px rgba(0,0,0,.6);
+  }
+  /* three phone glows */
+  .phone{
+    position:absolute; width:42px; height:64px; border-radius:6px;
+    background:linear-gradient(180deg, #a8c8ff 0%, #6a9bd8 100%);
+    box-shadow:
+      0 0 24px 6px rgba(160,200,255,.55),
+      0 0 60px 18px rgba(120,170,230,.35);
+  }
+  .phone.p1{ top:22%; left:12%; transform:rotate(-8deg);}
+  .phone.p2{ top:10%; left:50%; transform:translateX(-50%) rotate(2deg);}
+  .phone.p3{ top:24%; right:12%; transform:rotate(6deg);}
+  /* bowls / glass as warm dots */
+  .dish{position:absolute; border-radius:50%;}
+  .bowl{
+    width:54px; height:54px;
+    background:radial-gradient(circle at 50% 40%, #6b4a26 0%, #3a2611 70%, #1a1007 100%);
+    box-shadow:
+      inset 0 0 0 2px rgba(236,228,211,.25),
+      0 0 22px rgba(201,138,43,.18);
+  }
+  .bowl.b1{bottom:34%; left:22%;}
+  .bowl.b2{bottom:18%; left:50%; transform:translateX(-50%);}
+  .glass{
+    width:28px; height:28px; bottom:38%; right:24%;
+    background:radial-gradient(circle at 40% 35%, #a84a38 0%, #5a1f16 85%);
+    box-shadow:inset 0 0 0 1px rgba(236,228,211,.35);
+  }
+  .cup{
+    width:30px; height:30px; bottom:22%; right:18%;
+    background:radial-gradient(circle at 50% 40%, #3a2a1a 0%, #14100a 85%);
+    box-shadow:inset 0 0 0 2px rgba(236,228,211,.25);
+  }
+  .placeholder-label{
+    position:absolute; left:50%; bottom:14px; transform:translateX(-50%);
+    font-family:"JetBrains Mono", monospace; font-size:9px; letter-spacing:.22em;
+    text-transform:uppercase; color:rgba(236,228,211,.5);
+    white-space:nowrap;
+  }
+
+  /* ——— VARIATION A — Framed image, title in wide top margin ——— */
+  .v-a .cover{
+    background:var(--bone);
+  }
+  .v-a .frame{
+    position:absolute; left:8%; right:8%; top:34%; bottom:14%;
+    overflow:hidden;
+    box-shadow: inset 0 0 0 1px rgba(11,18,32,.4), 0 20px 40px rgba(11,18,32,.3);
+  }
+  .v-a .frame .scene{height:100%;}
+  .v-a .top-matter{
+    position:absolute; left:8%; right:8%; top:0; height:34%;
+    display:flex; flex-direction:column; justify-content:flex-end; padding-bottom:22px;
+  }
+  .v-a .imprint-mark{
+    font-family:"JetBrains Mono", monospace; font-size:9px; letter-spacing:.3em;
+    text-transform:uppercase; color:#6a6458; margin-bottom:14px;
+  }
+  .v-a .imprint-mark .dot{
+    display:inline-block; width:6px; height:6px; border-radius:50%;
+    background:var(--amber); vertical-align:middle; margin-right:8px;
+    transform:translateY(-1px);
+  }
+  .v-a .title{
+    font-family:"Bodoni Moda", serif; font-weight:500;
+    font-size:46px; line-height:.92; letter-spacing:-0.015em;
+    color:var(--ink);
+    margin:0;
+  }
+  .v-a .title .italic{font-style:italic; font-weight:400;}
+  .v-a .rule{
+    height:1px; background:var(--ink); margin:18px 0 14px; width:48px;
+  }
+  .v-a .bottom-matter{
+    position:absolute; left:8%; right:8%; bottom:0; height:12%;
+    display:flex; justify-content:space-between; align-items:center;
+    font-family:"Cormorant Garamond", serif;
+  }
+  .v-a .author{
+    font-size:16px; letter-spacing:.02em; color:var(--ink);
+    text-transform:uppercase; letter-spacing:.18em; font-family:"JetBrains Mono", monospace;
+    font-size:10px; font-weight:500;
+  }
+  .v-a .author b{color:var(--ink); font-weight:600;}
+  .v-a .publisher{
+    font-family:"JetBrains Mono", monospace; font-size:9px; letter-spacing:.22em;
+    text-transform:uppercase; color:#6a6458;
+  }
+  .v-a .spine{
+    background:var(--bone);
+    color:var(--ink);
+    border-right:1px solid rgba(11,18,32,.15);
+  }
+  .v-a .spine .spine-logo .dot{
+    display:inline-block; width:5px; height:5px; border-radius:50%;
+    background:var(--amber); margin-right:6px; vertical-align:middle; transform:translateY(-1px);
+  }
+
+  /* ——— VARIATION B — Dark, dramatic, title over image ——— */
+  .v-b .cover{
+    background:var(--ink);
+  }
+  .v-b .frame{
+    position:absolute; inset:0;
+  }
+  .v-b .frame .scene{height:100%;}
+  .v-b .vignette{
+    position:absolute; inset:0;
+    background:
+      linear-gradient(180deg, rgba(5,7,15,.85) 0%, rgba(5,7,15,.2) 38%, rgba(5,7,15,.0) 55%, rgba(5,7,15,.3) 82%, rgba(5,7,15,.85) 100%);
+  }
+  .v-b .top-matter{
+    position:absolute; left:10%; right:10%; top:8%;
+    color:var(--bone);
+  }
+  .v-b .imprint-mark{
+    font-family:"JetBrains Mono", monospace; font-size:9px; letter-spacing:.3em;
+    text-transform:uppercase; color:var(--amber-soft); margin-bottom:28px;
+  }
+  .v-b .title{
+    font-family:"Bodoni Moda", serif; font-weight:400;
+    font-size:52px; line-height:.9; letter-spacing:-0.02em;
+    color:var(--bone);
+    margin:0;
+    text-wrap:pretty;
+  }
+  .v-b .title .italic{font-style:italic;}
+  .v-b .title .amber{color:var(--amber-soft);}
+  .v-b .rule{
+    height:1px; background:var(--amber); margin:22px 0 0; width:64px;
+  }
+  .v-b .bottom-matter{
+    position:absolute; left:10%; right:10%; bottom:6%;
+    display:flex; justify-content:space-between; align-items:flex-end;
+    color:var(--bone);
+  }
+  .v-b .author{
+    font-family:"Bodoni Moda", serif; font-style:italic; font-weight:400;
+    font-size:22px; letter-spacing:.01em;
+  }
+  .v-b .publisher{
+    font-family:"JetBrains Mono", monospace; font-size:9px; letter-spacing:.22em;
+    text-transform:uppercase; color:var(--bone-2); opacity:.75;
+    text-align:right; line-height:1.8;
+  }
+  .v-b .spine{
+    background:var(--ink);
+    color:var(--bone);
+  }
+  .v-b .spine .spine-title{color:var(--bone);}
+  .v-b .spine .spine-author{color:var(--amber-soft);}
+  .v-b .spine .spine-logo{color:var(--bone-2); opacity:.7;}
+
+  /* ——— Spec callouts under each variation ——— */
+  .spec{
+    margin-top:28px;
+    display:grid; grid-template-columns:repeat(4, 1fr); gap:24px;
+    font-family:"JetBrains Mono", monospace; font-size:11px; letter-spacing:.08em;
+    color:#4a4638;
+  }
+  .spec .s-label{
+    text-transform:uppercase; color:#6a6458; font-size:9px; letter-spacing:.22em;
+    margin-bottom:8px;
+  }
+  .spec .s-val{color:var(--ink); font-family:"Cormorant Garamond", serif; font-size:15px; letter-spacing:0;}
+  .spec .swatches{display:flex; gap:6px; margin-top:4px;}
+  .spec .sw{width:18px; height:18px; border-radius:2px; box-shadow:inset 0 0 0 1px rgba(0,0,0,.15);}
+
+  .footer{
+    max-width:1280px; margin:40px auto 0; padding-top:24px; border-top:1px solid var(--line);
+    font-family:"JetBrains Mono", monospace; font-size:10px; letter-spacing:.2em;
+    text-transform:uppercase; color:#6a6458;
+    display:flex; justify-content:space-between;
+  }
+
+  @media (max-width: 900px){
+    .cover{width:360px; height:540px;}
+    .v-a .title{font-size:34px;}
+    .v-b .title{font-size:38px;}
+    .spec{grid-template-columns:repeat(2,1fr);}
+  }
+</style>
+</head>
+<body>
+
+<header class="page-head">
+  <div>
+    <div class="kicker">Jacket design · front + spine · 2 directions</div>
+    <h1>El Síndrome de la Vigencia</h1>
+  </div>
+  <div class="meta">
+    <div>Author · <b>Á. Moncayo Riofrío</b></div>
+    <div>Format · <b>Hardcover · 152 × 228 mm</b></div>
+    <div>Rev · <b>01 · Apr 2026</b></div>
+  </div>
+</header>
+
+<nav class="nav">
+  <a href="index.html">Index</a>
+  <a class="active" href="Cover Mockups.html">Covers</a>
+  <a href="Art Direction Brief.html">Art brief</a>
+</nav>
+
+<!-- ============ VARIATION A ============ -->
+<section class="variation v-a">
+  <div class="variation-head">
+    <div>
+      <div class="label">Direction A — 01/02</div>
+      <h2>The quiet frame.</h2>
+    </div>
+    <p class="note">Restrained. Bone paper, Didone caps top-set, a small framed image below. Lets the photograph breathe — editorial non-fiction posture.</p>
+  </div>
+
+  <div class="jacket">
+    <!-- spine -->
+    <div class="spine">
+      <div class="spine-logo"><span class="dot"></span>PP</div>
+      <div class="spine-title">El Síndrome de la Vigencia</div>
+      <div class="spine-author">Á. Moncayo Riofrío</div>
+    </div>
+    <!-- front -->
+    <div class="cover">
+      <div class="top-matter">
+        <div class="imprint-mark"><span class="dot"></span>Un ensayo</div>
+        <h3 class="title">El Síndrome<br/>de la <span class="italic">Vigencia</span></h3>
+        <div class="rule"></div>
+      </div>
+      <div class="frame">
+        <div class="scene">
+          <div class="table-scene">
+            <div class="table-top">
+              <div class="phone p1"></div>
+              <div class="phone p2"></div>
+              <div class="phone p3"></div>
+              <div class="dish bowl b1"></div>
+              <div class="dish bowl b2"></div>
+              <div class="dish glass"></div>
+              <div class="dish cup"></div>
+            </div>
+          </div>
+          <div class="grain"></div>
+          <div class="placeholder-label">[ photograph · overhead · dinner table · night ]</div>
+        </div>
+      </div>
+      <div class="bottom-matter">
+        <div class="author">Ángel Moncayo&nbsp;Riofrío</div>
+        <div class="publisher">Penguin · Press</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="spec">
+    <div>
+      <div class="s-label">Palette</div>
+      <div class="swatches">
+        <div class="sw" style="background:#ece4d3"></div>
+        <div class="sw" style="background:#0b1220"></div>
+        <div class="sw" style="background:#c98a2b"></div>
+        <div class="sw" style="background:#1a2744"></div>
+      </div>
+    </div>
+    <div>
+      <div class="s-label">Display</div>
+      <div class="s-val">Bodoni Moda · 46/42 · tight</div>
+    </div>
+    <div>
+      <div class="s-label">Posture</div>
+      <div class="s-val">Editorial non-fiction, literary</div>
+    </div>
+    <div>
+      <div class="s-label">Contrast vs B</div>
+      <div class="s-val">Light field · title above image</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ VARIATION B ============ -->
+<section class="variation v-b">
+  <div class="variation-head">
+    <div>
+      <div class="label">Direction B — 02/02</div>
+      <h2>Into the dark.</h2>
+    </div>
+    <p class="note">Full-bleed, dramatic. Title floats in the negative space at top, amber accent on a single word. Cinematic, melancholic — leans FSG / literary hardcover.</p>
+  </div>
+
+  <div class="jacket">
+    <div class="spine">
+      <div class="spine-logo">PP</div>
+      <div class="spine-title">El Síndrome de la Vigencia</div>
+      <div class="spine-author">Á. Moncayo Riofrío</div>
+    </div>
+    <div class="cover">
+      <div class="frame">
+        <div class="scene">
+          <div class="table-scene">
+            <div class="table-top">
+              <div class="phone p1"></div>
+              <div class="phone p2"></div>
+              <div class="phone p3"></div>
+              <div class="dish bowl b1"></div>
+              <div class="dish bowl b2"></div>
+              <div class="dish glass"></div>
+              <div class="dish cup"></div>
+            </div>
+          </div>
+          <div class="grain"></div>
+          <div class="placeholder-label">[ photograph · overhead · dinner table · night ]</div>
+        </div>
+        <div class="vignette"></div>
+      </div>
+      <div class="top-matter">
+        <div class="imprint-mark">— Un ensayo sobre la atención</div>
+        <h3 class="title">El Síndrome<br/>de la <span class="italic amber">Vigencia</span></h3>
+        <div class="rule"></div>
+      </div>
+      <div class="bottom-matter">
+        <div class="author">Ángel Moncayo Riofrío</div>
+        <div class="publisher">
+          Penguin<br/>Press
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="spec">
+    <div>
+      <div class="s-label">Palette</div>
+      <div class="swatches">
+        <div class="sw" style="background:#0b1220"></div>
+        <div class="sw" style="background:#1a2744"></div>
+        <div class="sw" style="background:#d7a053"></div>
+        <div class="sw" style="background:#ece4d3"></div>
+      </div>
+    </div>
+    <div>
+      <div class="s-label">Display</div>
+      <div class="s-val">Bodoni Moda · 52/46 · italic accent</div>
+    </div>
+    <div>
+      <div class="s-label">Posture</div>
+      <div class="s-val">Cinematic, melancholic, literary</div>
+    </div>
+    <div>
+      <div class="s-label">Contrast vs A</div>
+      <div class="s-val">Dark field · title over image</div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div>Image area shown as schematic placeholder — swap with final photograph / illustration.</div>
+  <div>Casa Sammy · Jacket design</div>
+</footer>
+
+</body>
+</html>

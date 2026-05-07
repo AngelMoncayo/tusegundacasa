@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>El Síndrome de la Vigencia — Index</title>
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400&family=Cormorant+Garamond:ital,wght@0,400;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --ink:#0b1220; --amber:#c98a2b; --bone:#ece4d3; --paper:#f2ecdf;
+    --line:rgba(11,18,32,.18); --muted:#6a6458;
+  }
+  html,body{margin:0;padding:0;}
+  body{
+    font-family:"Cormorant Garamond", Georgia, serif; color:var(--ink);
+    background:
+      radial-gradient(1200px 800px at 20% 10%, #f6f0e2 0%, transparent 60%),
+      radial-gradient(1200px 800px at 80% 90%, #ece4d3 0%, transparent 60%),
+      var(--paper);
+    min-height:100vh; padding:64px 40px;
+  }
+  .wrap{max-width:960px; margin:0 auto;}
+  .kicker{
+    font-family:"JetBrains Mono", monospace; font-size:10px; letter-spacing:.3em;
+    text-transform:uppercase; color:var(--muted); margin-bottom:24px;
+  }
+  .kicker .dot{display:inline-block;width:8px;height:8px;background:var(--amber);border-radius:50%;margin-right:10px;vertical-align:middle;transform:translateY(-1px);}
+  h1{
+    font-family:"Bodoni Moda", serif; font-weight:500;
+    font-size:clamp(44px, 6vw, 72px); line-height:.95; letter-spacing:-0.02em;
+    margin:0 0 12px;
+  }
+  h1 em{font-style:italic; font-weight:400;}
+  .lede{font-style:italic; font-size:20px; max-width:620px; color:#3a352a; margin:0 0 48px;}
+
+  .cards{display:grid; grid-template-columns:1fr 1fr; gap:24px;}
+  .card{
+    display:block; text-decoration:none; color:inherit;
+    background:#fbf6ea; border:1px solid var(--line);
+    padding:28px 28px 24px; position:relative; overflow:hidden;
+    transition:transform .3s ease, box-shadow .3s ease;
+    box-shadow:0 10px 24px rgba(11,18,32,.08);
+  }
+  .card:hover{transform:translateY(-3px); box-shadow:0 18px 36px rgba(11,18,32,.14);}
+  .card .num{
+    font-family:"JetBrains Mono", monospace; font-size:10px; letter-spacing:.25em;
+    text-transform:uppercase; color:var(--muted); margin-bottom:20px;
+  }
+  .card h2{
+    font-family:"Bodoni Moda", serif; font-weight:500; font-style:italic;
+    font-size:32px; margin:0 0 8px; letter-spacing:-0.01em;
+  }
+  .card p{margin:0 0 20px; font-size:15px; color:#3a352a; max-width:40ch;}
+  .card .go{
+    font-family:"JetBrains Mono", monospace; font-size:10px; letter-spacing:.22em;
+    text-transform:uppercase; color:var(--ink);
+    display:inline-flex; align-items:center; gap:8px;
+  }
+  .card .go::after{content:"→";}
+  .card::before{
+    content:""; position:absolute; left:28px; top:20px; width:22px; height:3px;
+    background:var(--amber);
+  }
+
+  .foot{
+    margin-top:64px; padding-top:20px; border-top:1px solid var(--line);
+    font-family:"JetBrains Mono", monospace; font-size:10px; letter-spacing:.22em;
+    text-transform:uppercase; color:var(--muted);
+    display:flex; justify-content:space-between;
+  }
+  @media (max-width:720px){.cards{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="kicker"><span class="dot"></span>Casa Sammy · Jacket design · Rev 01</div>
+  <h1>El Síndrome<br/>de la <em>Vigencia</em></h1>
+  <p class="lede">Ángel Moncayo Riofrío — literary essay. Two cover directions plus a one-page art brief.</p>
+
+  <div class="cards">
+    <a class="card" href="Cover Mockups.html">
+      <div class="num">01 · Covers</div>
+      <h2>Two jacket directions</h2>
+      <p>Front + spine. "The quiet frame" (light, restrained) and "Into the dark" (cinematic, full-bleed).</p>
+      <span class="go">Open</span>
+    </a>
+    <a class="card" href="Art Direction Brief.html">
+      <div class="num">02 · Art brief</div>
+      <h2>One-page direction</h2>
+      <p>Image description, mood, palette, composition diagram, type specimen, do &amp; don't.</p>
+      <span class="go">Open</span>
+    </a>
+  </div>
+
+  <div class="foot">
+    <div>Overhead dinner · three phones · melancholic</div>
+    <div>Apr 2026</div>
+  </div>
+</div>
+</body>
+</html>

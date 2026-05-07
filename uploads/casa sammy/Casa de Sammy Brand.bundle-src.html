@@ -1,0 +1,849 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Casa de Sammy — Brand Identity</title>
+<template id="__bundler_thumbnail" data-bg-color="#2B3A2E">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <rect width="1200" height="800" fill="#2B3A2E"/>
+    <g transform="translate(600 400)" fill="none" stroke="#F4EFE4" stroke-width="3" stroke-linecap="round">
+      <circle r="160"/>
+      <path d="M -120 0 A 120 120 0 0 1 120 0" stroke="#B8975A" stroke-width="6"/>
+      <g stroke="#B8975A" stroke-width="4">
+        <line x1="-160" y1="0" x2="-200" y2="0"/>
+        <line x1="160" y1="0" x2="200" y2="0"/>
+        <line x1="-130" y1="-90" x2="-160" y2="-110"/>
+        <line x1="130" y1="-90" x2="160" y2="-110"/>
+        <line x1="0" y1="-160" x2="0" y2="-200"/>
+      </g>
+    </g>
+    <text x="600" y="640" text-anchor="middle" font-family="Georgia, serif" font-style="italic" font-size="44" fill="#F4EFE4" letter-spacing="6">Casa de Sammy</text>
+  </svg>
+</template>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Italiana&family=Inter:wght@300;400;500;600&family=Cormorant:ital,wght@1,300&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --forest: #2B3A2E;
+    --forest-deep: #1C2620;
+    --moss: #4A5D3F;
+    --sage: #8FA083;
+    --cream: #F4EFE4;
+    --bone: #EAE2D0;
+    --clay: #B88A5E;
+    --ink: #141612;
+    --stone: #7A766D;
+    --gold: #B8975A;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:var(--cream);color:var(--ink);font-family:'Inter',sans-serif;font-weight:300;-webkit-font-smoothing:antialiased}
+  body{min-height:100vh}
+
+  /* Nav */
+  .nav{position:sticky;top:0;z-index:50;background:rgba(244,239,228,.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(20,22,18,.08)}
+  .nav-inner{max-width:1400px;margin:0 auto;padding:18px 36px;display:flex;align-items:center;gap:40px}
+  .nav-mark{font-family:'Italiana',serif;font-size:18px;letter-spacing:.08em;color:var(--forest)}
+  .nav-mark em{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:400;color:var(--clay)}
+  .nav-tabs{display:flex;gap:4px;margin-left:auto}
+  .nav-tabs button{background:none;border:none;font-family:'Inter',sans-serif;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--stone);padding:10px 16px;cursor:pointer;border-radius:999px;transition:.2s}
+  .nav-tabs button:hover{color:var(--forest)}
+  .nav-tabs button.active{background:var(--forest);color:var(--cream)}
+
+  /* Sections */
+  section.page{display:none;padding:60px 36px 120px;max-width:1400px;margin:0 auto}
+  section.page.active{display:block}
+
+  .eyebrow{font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:var(--stone);font-weight:500}
+  .page-title{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:64px;line-height:1;color:var(--forest);margin:14px 0 12px;letter-spacing:-.01em}
+  .page-sub{font-size:15px;color:var(--stone);max-width:620px;line-height:1.6;font-weight:300}
+
+  /* ====== COVER ====== */
+  .cover{position:relative;min-height:82vh;border-radius:4px;overflow:hidden;background:var(--forest-deep);color:var(--cream);display:grid;grid-template-columns:1.1fr .9fr;gap:0;margin-top:20px}
+  .cover-left{padding:64px 56px;display:flex;flex-direction:column;justify-content:space-between;position:relative;z-index:2}
+  .cover-tag{display:flex;align-items:center;gap:14px;font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:var(--sage)}
+  .cover-tag::before{content:"";display:block;width:36px;height:1px;background:var(--sage)}
+  .cover-title{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:92px;line-height:.92;letter-spacing:-.02em}
+  .cover-title em{font-style:italic;color:var(--clay)}
+  .cover-slogan{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;font-size:28px;color:var(--bone);opacity:.85;margin-top:24px}
+  .cover-foot{display:flex;justify-content:space-between;align-items:flex-end;font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--sage)}
+  .cover-right{position:relative;background:linear-gradient(180deg,#3b4a3a 0%,#1f2a20 100%);display:flex;align-items:center;justify-content:center;overflow:hidden}
+  .cover-right::before{content:"";position:absolute;inset:0;background:
+    radial-gradient(ellipse at 50% 120%, rgba(184,151,90,.25), transparent 60%),
+    radial-gradient(ellipse at 50% 30%, rgba(143,160,131,.2), transparent 55%);
+  }
+  .cover-mark{position:relative;z-index:2}
+
+  /* Primary Logo SVG container */
+  .logo-primary{width:360px;height:auto}
+
+  /* ====== LOGO CANVAS ====== */
+  .logo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:48px}
+  .logo-card{background:var(--bone);border-radius:3px;padding:48px 32px 24px;display:flex;flex-direction:column;gap:20px;min-height:360px;position:relative;overflow:hidden}
+  .logo-card.dark{background:var(--forest-deep);color:var(--cream)}
+  .logo-card.clay{background:var(--clay);color:var(--cream)}
+  .logo-card.sage{background:var(--sage)}
+  .logo-card .lbl{position:absolute;top:16px;left:20px;font-size:9px;letter-spacing:.26em;text-transform:uppercase;color:inherit;opacity:.55}
+  .logo-card .no{position:absolute;top:16px;right:20px;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14px;opacity:.55}
+  .logo-stage{flex:1;display:flex;align-items:center;justify-content:center;padding:16px 8px}
+  .logo-caption{font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:inherit;opacity:.6;text-align:center;padding-top:8px;border-top:1px solid currentColor;border-color:currentColor;opacity:.5}
+  .logo-card .logo-caption{border-top:1px solid rgba(0,0,0,.1)}
+  .logo-card.dark .logo-caption,.logo-card.clay .logo-caption{border-top:1px solid rgba(255,255,255,.15)}
+
+  /* ====== COLOR ====== */
+  .swatch-row{display:grid;grid-template-columns:repeat(6,1fr);gap:16px;margin-top:40px}
+  .swatch{aspect-ratio:3/4;border-radius:3px;padding:20px;display:flex;flex-direction:column;justify-content:space-between;position:relative}
+  .swatch .name{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:400}
+  .swatch .meta{font-size:9px;letter-spacing:.2em;text-transform:uppercase;line-height:1.8;font-family:'Inter',monospace}
+
+  /* ====== TYPE ====== */
+  .type-block{margin-top:48px;display:grid;grid-template-columns:200px 1fr;gap:32px;padding:32px 0;border-top:1px solid rgba(20,22,18,.12)}
+  .type-label{font-size:10px;letter-spacing:.26em;text-transform:uppercase;color:var(--stone)}
+  .type-label b{display:block;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:28px;font-weight:300;color:var(--forest);letter-spacing:0;text-transform:none;margin-top:6px}
+  .type-specimen-xl{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:92px;line-height:.9;color:var(--forest);letter-spacing:-.02em}
+  .type-specimen-xl em{color:var(--clay)}
+  .type-specimen-lg{font-family:'Italiana',serif;font-size:48px;color:var(--forest);letter-spacing:.02em}
+  .type-specimen-md{font-family:'Inter',sans-serif;font-weight:300;font-size:16px;line-height:1.7;color:var(--ink);max-width:540px}
+  .type-scale{display:flex;gap:32px;align-items:baseline;flex-wrap:wrap}
+  .type-scale span{font-family:'Cormorant Garamond',serif;color:var(--forest)}
+
+  /* ====== COLLATERAL ====== */
+  .collat-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:28px;margin-top:48px}
+  .collat{border-radius:3px;overflow:hidden;position:relative;aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;padding:32px}
+  .collat.tall{aspect-ratio:3/4}
+  .collat .pill{position:absolute;top:18px;left:18px;font-size:9px;letter-spacing:.22em;text-transform:uppercase;padding:6px 10px;background:rgba(255,255,255,.8);color:var(--ink);border-radius:999px;z-index:3}
+
+  /* Business card */
+  .bizcard-wrap{background:#ddd6c5;padding:40px;display:grid;grid-template-columns:1fr 1fr;gap:24px;aspect-ratio:auto;min-height:340px}
+  .bizcard{aspect-ratio:1.75/1;background:var(--cream);border-radius:2px;padding:22px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 20px 50px rgba(0,0,0,.12)}
+  .bizcard.back{background:var(--forest-deep);color:var(--cream);align-items:center;justify-content:center}
+  .bc-top{display:flex;justify-content:space-between;align-items:flex-start}
+  .bc-name{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:400;color:var(--forest)}
+  .bc-role{font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--stone);margin-top:4px}
+  .bc-info{font-size:10px;letter-spacing:.12em;line-height:1.8;color:var(--ink)}
+
+  /* Bottle */
+  .bottle-scene{background:linear-gradient(180deg,#2a3629,#1a231c);display:flex;gap:36px;align-items:flex-end;justify-content:center;padding:48px 32px 0;overflow:hidden}
+  .bottle{width:150px;height:310px;background:linear-gradient(180deg,#d9d1bc 0%,#c6bda4 100%);border-radius:20px 20px 10px 10px/40px 40px 10px 10px;position:relative;box-shadow:inset 14px 0 24px rgba(255,255,255,.25),inset -18px 0 32px rgba(0,0,0,.18),0 30px 60px rgba(0,0,0,.5)}
+  .bottle::before{content:"";position:absolute;top:-22px;left:50%;transform:translateX(-50%);width:44px;height:28px;background:linear-gradient(180deg,#3a4a37,#2b3a2e);border-radius:4px}
+  .bottle-label{position:absolute;left:10%;right:10%;top:30%;bottom:14%;background:var(--cream);padding:18px 12px;display:flex;flex-direction:column;align-items:center;justify-content:space-between;text-align:center}
+  .bottle-label .bl-tag{font-size:7px;letter-spacing:.3em;text-transform:uppercase;color:var(--stone)}
+  .bottle-label .bl-name{font-family:'Cormorant Garamond',serif;font-size:18px;color:var(--forest);line-height:1}
+  .bottle-label .bl-name em{font-style:italic;color:var(--clay);display:block;font-size:22px}
+  .bottle-label .bl-foot{font-size:7px;letter-spacing:.24em;text-transform:uppercase;color:var(--stone)}
+  .bottle.amber{background:linear-gradient(180deg,#7a5a3a 0%,#4e3a24 100%);box-shadow:inset 14px 0 24px rgba(255,220,180,.25),inset -18px 0 32px rgba(0,0,0,.4),0 30px 60px rgba(0,0,0,.5)}
+  .bottle.amber .bottle-label{background:var(--bone)}
+  .bottle.green{background:linear-gradient(180deg,#3e5a3f 0%,#1f3324 100%);box-shadow:inset 14px 0 24px rgba(200,220,180,.2),inset -18px 0 32px rgba(0,0,0,.45),0 30px 60px rgba(0,0,0,.5)}
+  .bottle.green .bottle-label{background:var(--bone)}
+
+  /* Signage */
+  .sign-scene{background:
+    linear-gradient(180deg,rgba(20,24,18,.15),rgba(20,24,18,.55)),
+    repeating-linear-gradient(95deg,#6b614a 0 2px,transparent 2px 14px),
+    linear-gradient(180deg,#9a8a6a 0%,#6b5d46 100%);
+    display:flex;align-items:center;justify-content:center}
+  .sign{background:var(--forest-deep);color:var(--cream);padding:40px 44px;text-align:center;box-shadow:0 30px 80px rgba(0,0,0,.5);position:relative;border:1px solid rgba(244,239,228,.15)}
+  .sign-inner{border:1px solid rgba(244,239,228,.25);padding:26px 40px}
+
+  /* Robe / Towel */
+  .robe-scene{background:#d7cdb9;display:flex;align-items:center;justify-content:center;padding:0}
+  .robe{width:62%;aspect-ratio:3/4;background:repeating-linear-gradient(90deg,#efe7d4 0 4px,#e8dfc8 4px 8px);border-radius:2px;position:relative;box-shadow:0 20px 60px rgba(0,0,0,.2);padding:36px;display:flex;flex-direction:column;justify-content:flex-end;align-items:center}
+  .robe::before{content:"";position:absolute;top:-1px;left:10%;right:10%;height:12%;background:#d7cdb9;border-radius:0 0 50% 50%}
+
+  /* Menu card */
+  .menu-scene{background:#c9bfa8;display:flex;align-items:center;justify-content:center;padding:30px}
+  .menu{background:var(--cream);width:75%;aspect-ratio:3/4;padding:36px 32px;box-shadow:0 20px 50px rgba(0,0,0,.2);display:flex;flex-direction:column;gap:18px}
+  .menu h3{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:30px;color:var(--forest);text-align:center;letter-spacing:.02em}
+  .menu .menu-sub{text-align:center;font-size:9px;letter-spacing:.28em;text-transform:uppercase;color:var(--clay);margin-top:-10px}
+  .menu-hr{height:1px;background:rgba(20,22,18,.15);width:40%;margin:6px auto}
+  .menu ul{list-style:none;display:flex;flex-direction:column;gap:12px;font-size:11px}
+  .menu li{display:flex;justify-content:space-between;align-items:baseline;gap:8px;color:var(--ink)}
+  .menu li span:first-child{font-family:'Cormorant Garamond',serif;font-size:15px;color:var(--forest)}
+  .menu li em{flex:1;border-bottom:1px dotted rgba(20,22,18,.2);margin:0 6px;height:1px;position:relative;top:-4px}
+  .menu li span:last-child{color:var(--stone);letter-spacing:.08em;font-size:10px}
+
+  /* Full width image block */
+  .hero-photo{margin-top:56px;aspect-ratio:16/7;border-radius:3px;overflow:hidden;position:relative;background:
+    linear-gradient(180deg,rgba(20,24,18,.15),rgba(20,24,18,.55)),
+    radial-gradient(ellipse at 50% 80%,#3b4a3a 0%,#1a2218 70%);
+    display:flex;align-items:center;justify-content:center}
+  .hero-photo .hero-copy{text-align:center;color:var(--cream);z-index:2}
+  .hero-photo .hero-copy .cap{font-size:10px;letter-spacing:.32em;text-transform:uppercase;color:var(--sage);margin-bottom:18px}
+  .hero-photo .hero-copy h2{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:72px;letter-spacing:-.015em;line-height:1}
+  .hero-photo .hero-copy h2 em{font-style:italic;color:var(--clay)}
+  .hero-photo .hero-copy .slogan{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:22px;margin-top:16px;color:var(--bone);opacity:.85}
+  /* mountain silhouette */
+  .mtn{position:absolute;bottom:0;left:0;right:0;height:45%;z-index:1}
+
+  /* ====== PATTERNS ====== */
+  .pattern-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:48px}
+  .pat{aspect-ratio:1;border-radius:3px;overflow:hidden;position:relative}
+  .pat .plbl{position:absolute;bottom:10px;left:12px;font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--cream);z-index:2;mix-blend-mode:difference}
+  .pat.rays{background:radial-gradient(ellipse at 50% 100%,#f4efe4 0 20%,transparent 22%),conic-gradient(from -90deg at 50% 100%,#2b3a2e 0deg,transparent 4deg 8deg,#2b3a2e 12deg,transparent 16deg 20deg,#2b3a2e 24deg,transparent 28deg 32deg,#2b3a2e 36deg,transparent 40deg 44deg,#2b3a2e 48deg,transparent 52deg 56deg,#2b3a2e 60deg,transparent 64deg 68deg,#2b3a2e 72deg,transparent 76deg 80deg,#2b3a2e 84deg,transparent 88deg 92deg,#2b3a2e 96deg,transparent 100deg 104deg,#2b3a2e 108deg,transparent 112deg 116deg,#2b3a2e 120deg,transparent 124deg 128deg,#2b3a2e 132deg,transparent 136deg 140deg,#2b3a2e 144deg,transparent 148deg 152deg,#2b3a2e 156deg,transparent 160deg 164deg,#2b3a2e 168deg,transparent 172deg 176deg,#2b3a2e 180deg,transparent 360deg),#f4efe4}
+  .pat.topo{background:var(--forest-deep);position:relative}
+  .pat.topo svg{position:absolute;inset:0;width:100%;height:100%}
+  .pat.stamp{background:var(--clay);display:flex;align-items:center;justify-content:center}
+  .pat.stamp svg{width:70%;height:70%}
+  .pat.grid-ln{background:var(--cream);background-image:linear-gradient(var(--sage) 1px,transparent 1px),linear-gradient(90deg,var(--sage) 1px,transparent 1px);background-size:22px 22px;opacity:1;position:relative}
+  .pat.grid-ln::after{content:"∞";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:120px;color:var(--forest)}
+
+  /* Voice tiles */
+  .voice-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:40px}
+  .voice-card{background:var(--bone);padding:32px;border-radius:3px;min-height:220px;display:flex;flex-direction:column;justify-content:space-between}
+  .voice-card h4{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:26px;color:var(--forest)}
+  .voice-card p{font-size:12px;color:var(--stone);line-height:1.6}
+  .voice-card .tag{font-size:9px;letter-spacing:.26em;text-transform:uppercase;color:var(--clay)}
+
+  /* Don'ts / Do's */
+  .rules-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:40px}
+  .rule{background:var(--bone);padding:24px;border-radius:3px;display:flex;gap:18px;align-items:center}
+  .rule.no{background:#efe3d6}
+  .rule-ico{width:64px;height:64px;flex-shrink:0;border-radius:50%;background:var(--cream);display:flex;align-items:center;justify-content:center}
+  .rule-ico.x{background:#2b3a2e;color:#c9725a}
+  .rule p{font-size:12px;color:var(--ink);line-height:1.5}
+  .rule .hd{font-family:'Cormorant Garamond',serif;font-size:18px;color:var(--forest);margin-bottom:4px}
+
+  /* Section header */
+  .section-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;padding-bottom:24px;border-bottom:1px solid rgba(20,22,18,.12)}
+
+  /* Utility */
+  .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+  .mt-xl{margin-top:72px}
+
+</style>
+</head>
+<body>
+
+<!-- ============== NAV ============== -->
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-mark">CASA DE <em>Sammy</em></div>
+    <div class="nav-tabs" id="tabs">
+      <button data-t="cover" class="active">Cover</button>
+      <button data-t="logos">Logo Suite</button>
+      <button data-t="color">Color</button>
+      <button data-t="type">Typography</button>
+      <button data-t="pattern">Patterns</button>
+      <button data-t="voice">Voice</button>
+      <button data-t="collat">Collateral</button>
+      <button data-t="rules">Do's & Don'ts</button>
+    </div>
+  </div>
+</nav>
+
+<!-- ============== COVER ============== -->
+<section class="page active" data-page="cover" data-screen-label="01 Cover">
+  <div class="cover">
+    <div class="cover-left">
+      <div>
+        <div class="cover-tag">Brand Identity · 2026</div>
+        <div style="margin-top:28px;font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--sage)">A sanctuary in the mountains</div>
+      </div>
+      <div>
+        <h1 class="cover-title">Casa<br/>de <em>Sammy</em></h1>
+        <div class="cover-slogan">— tu segunda casa</div>
+      </div>
+      <div class="cover-foot">
+        <span>Spa · Retreat · Ritual</span>
+        <span>Vol. 01</span>
+      </div>
+    </div>
+    <div class="cover-right">
+      <div class="cover-mark" id="primary-mark"></div>
+    </div>
+  </div>
+
+  <div class="hero-photo" style="margin-top:28px">
+    <svg class="mtn" viewBox="0 0 1200 300" preserveAspectRatio="none">
+      <path d="M0 300 L0 180 L180 80 L320 160 L440 70 L580 190 L720 100 L860 170 L1000 90 L1200 180 L1200 300 Z" fill="#1a2218" opacity=".85"/>
+      <path d="M0 300 L0 230 L140 160 L280 220 L420 140 L560 230 L700 170 L840 230 L980 160 L1200 220 L1200 300 Z" fill="#0e140f"/>
+    </svg>
+    <div class="hero-copy">
+      <div class="cap">Respira · Descansa · Vuelve</div>
+      <h2>tu segunda <em>casa</em></h2>
+      <div class="slogan">where the mountain breathes for you.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== LOGOS ============== -->
+<section class="page" data-page="logos" data-screen-label="02 Logo Suite">
+  <div class="section-head">
+    <div>
+      <div class="eyebrow">02 · Logo Suite</div>
+      <h2 class="page-title">Six marks, one soul.</h2>
+      <p class="page-sub">A primary emblem anchors the identity, supported by a refined wordmark, monogram, stamp, and horizontal lockup — each calibrated for a different context, from signage to a single thread on a linen robe.</p>
+    </div>
+  </div>
+
+  <div class="logo-grid" id="logoGrid"></div>
+
+  <div class="grid-2 mt-xl">
+    <div class="logo-card" style="aspect-ratio:auto;min-height:420px">
+      <div class="lbl">Clear Space · Minimum Size</div>
+      <div class="logo-stage" id="clearspace"></div>
+      <div class="logo-caption">X-height padding on all sides · Minimum width 24mm</div>
+    </div>
+    <div class="logo-card dark" style="aspect-ratio:auto;min-height:420px">
+      <div class="lbl">Reversed</div>
+      <div class="logo-stage" id="reversed"></div>
+      <div class="logo-caption">For dark surfaces · Photographic backgrounds</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== COLOR ============== -->
+<section class="page" data-page="color" data-screen-label="03 Color">
+  <div class="section-head">
+    <div>
+      <div class="eyebrow">03 · Palette</div>
+      <h2 class="page-title">Earth, moss, and morning light.</h2>
+      <p class="page-sub">A grounded palette drawn from slow mornings in the mountains — deep forest as the brand's spine, warm cream as its breath, clay and gold as punctuation.</p>
+    </div>
+  </div>
+
+  <div class="swatch-row">
+    <div class="swatch" style="background:var(--forest);color:var(--cream)">
+      <div><div class="eyebrow" style="color:var(--sage)">Primary</div><div class="name">Forest</div></div>
+      <div class="meta">#2B3A2E<br/>PMS 5535C<br/>C78 M55 Y80 K70</div>
+    </div>
+    <div class="swatch" style="background:var(--cream);color:var(--forest)">
+      <div><div class="eyebrow" style="color:var(--clay)">Canvas</div><div class="name">Cream</div></div>
+      <div class="meta">#F4EFE4<br/>PMS 7527C<br/>C4 M5 Y14 K0</div>
+    </div>
+    <div class="swatch" style="background:var(--clay);color:var(--cream)">
+      <div><div class="eyebrow" style="color:var(--bone)">Accent</div><div class="name">Clay</div></div>
+      <div class="meta">#B88A5E<br/>PMS 7572C<br/>C26 M45 Y72 K5</div>
+    </div>
+    <div class="swatch" style="background:var(--sage);color:var(--forest-deep)">
+      <div><div class="eyebrow">Secondary</div><div class="name">Sage</div></div>
+      <div class="meta">#8FA083<br/>PMS 5777C<br/>C45 M25 Y50 K5</div>
+    </div>
+    <div class="swatch" style="background:var(--gold);color:var(--forest-deep)">
+      <div><div class="eyebrow">Detail</div><div class="name">Gold</div></div>
+      <div class="meta">#B8975A<br/>PMS 7562C<br/>Foil / Emboss</div>
+    </div>
+    <div class="swatch" style="background:var(--ink);color:var(--cream)">
+      <div><div class="eyebrow" style="color:var(--stone)">Neutral</div><div class="name">Ink</div></div>
+      <div class="meta">#141612<br/>PMS Black 6C<br/>Body text only</div>
+    </div>
+  </div>
+
+  <div class="mt-xl">
+    <div class="eyebrow">Proportion of use</div>
+    <div style="display:flex;height:64px;margin-top:14px;border-radius:3px;overflow:hidden">
+      <div style="flex:45;background:var(--forest)"></div>
+      <div style="flex:30;background:var(--cream);border:1px solid rgba(0,0,0,.04)"></div>
+      <div style="flex:10;background:var(--clay)"></div>
+      <div style="flex:8;background:var(--sage)"></div>
+      <div style="flex:4;background:var(--gold)"></div>
+      <div style="flex:3;background:var(--ink)"></div>
+    </div>
+    <div style="display:flex;margin-top:10px;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--stone)">
+      <div style="flex:45">Forest 45%</div>
+      <div style="flex:30">Cream 30%</div>
+      <div style="flex:10">Clay 10%</div>
+      <div style="flex:8">Sage 8%</div>
+      <div style="flex:4">Gold 4</div>
+      <div style="flex:3">Ink 3</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== TYPE ============== -->
+<section class="page" data-page="type" data-screen-label="04 Typography">
+  <div class="section-head">
+    <div>
+      <div class="eyebrow">04 · Typography</div>
+      <h2 class="page-title">A slow, serif voice.</h2>
+      <p class="page-sub">Cormorant Garamond carries emotion and ritual; Italiana signs the letterhead; Inter does the quiet, functional work of wayfinding and small print.</p>
+    </div>
+  </div>
+
+  <div class="type-block">
+    <div class="type-label">Display<b>Cormorant Garamond</b>Light · 92/88</div>
+    <div>
+      <div class="type-specimen-xl">respira<br/><em>descansa</em><br/>vuelve.</div>
+    </div>
+  </div>
+
+  <div class="type-block">
+    <div class="type-label">Signature<b>Italiana</b>Regular · 48/48</div>
+    <div>
+      <div class="type-specimen-lg">CASA DE SAMMY</div>
+      <div style="font-family:'Italiana',serif;font-size:22px;letter-spacing:.28em;color:var(--stone);margin-top:10px">TU · SEGUNDA · CASA</div>
+    </div>
+  </div>
+
+  <div class="type-block">
+    <div class="type-label">Body<b>Inter</b>Light 300 · 16/27</div>
+    <div>
+      <p class="type-specimen-md">Dejas el coche en la grava. El aire huele a pino mojado y a romero. Una puerta de madera se abre sola, como si ya te estuviera esperando. Aquí el tiempo se comporta distinto — más lento, más tibio, más tuyo. Respira. Estás en casa.</p>
+    </div>
+  </div>
+
+  <div class="type-block">
+    <div class="type-label">Scale<b>All sizes</b>px values</div>
+    <div class="type-scale">
+      <span style="font-size:96px;line-height:1">Aa</span>
+      <span style="font-size:64px">Aa</span>
+      <span style="font-size:40px">Aa</span>
+      <span style="font-size:28px">Aa</span>
+      <span style="font-size:20px">Aa</span>
+      <span style="font-size:15px;font-family:'Inter',sans-serif">Aa</span>
+      <span style="font-size:11px;font-family:'Inter',sans-serif;letter-spacing:.22em;text-transform:uppercase">Caption</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============== PATTERN ============== -->
+<section class="page" data-page="pattern" data-screen-label="05 Patterns">
+  <div class="section-head">
+    <div>
+      <div class="eyebrow">05 · Marks & Motifs</div>
+      <h2 class="page-title">Sun, ridge, ritual.</h2>
+      <p class="page-sub">Four supporting motifs draw from the land and the body — to be used sparingly as accents on packaging, stationery, linen, and signage.</p>
+    </div>
+  </div>
+
+  <div class="pattern-grid">
+    <div class="pat rays"><div class="plbl">Sunrise</div></div>
+    <div class="pat topo">
+      <svg viewBox="0 0 200 200" preserveAspectRatio="xMidYMid slice">
+        <g fill="none" stroke="#8FA083" stroke-width=".8" opacity=".7">
+          <path d="M-20 110 Q 40 60 100 95 T 220 80"/>
+          <path d="M-20 130 Q 40 90 100 115 T 220 100"/>
+          <path d="M-20 150 Q 40 115 100 135 T 220 120"/>
+          <path d="M-20 170 Q 40 135 100 155 T 220 145"/>
+          <path d="M-20 190 Q 40 160 100 175 T 220 165"/>
+          <path d="M-20 90 Q 40 30 100 75 T 220 60"/>
+        </g>
+      </svg>
+      <div class="plbl" style="color:var(--sage);mix-blend-mode:normal">Topography</div>
+    </div>
+    <div class="pat stamp">
+      <svg viewBox="0 0 100 100">
+        <circle cx="50" cy="50" r="46" fill="none" stroke="#F4EFE4" stroke-width=".6"/>
+        <circle cx="50" cy="50" r="42" fill="none" stroke="#F4EFE4" stroke-width=".4"/>
+        <text x="50" y="18" text-anchor="middle" font-family="Italiana,serif" font-size="6" fill="#F4EFE4" letter-spacing="1.8">CASA · DE · SAMMY · EST · 26</text>
+        <g transform="translate(50 58)">
+          <path d="M-22 12 L-8 -6 L0 4 L10 -10 L22 12 Z" fill="#F4EFE4"/>
+          <circle cx="0" cy="-12" r="6" fill="#F4EFE4"/>
+        </g>
+        <text x="50" y="86" text-anchor="middle" font-family="'Cormorant Garamond',serif" font-style="italic" font-size="7" fill="#F4EFE4">tu segunda casa</text>
+      </svg>
+      <div class="plbl" style="color:var(--cream)">Seal</div>
+    </div>
+    <div class="pat grid-ln"><div class="plbl" style="color:var(--forest);mix-blend-mode:normal">Monogram ∞</div></div>
+  </div>
+</section>
+
+<!-- ============== VOICE ============== -->
+<section class="page" data-page="voice" data-screen-label="06 Voice">
+  <div class="section-head">
+    <div>
+      <div class="eyebrow">06 · Voice</div>
+      <h2 class="page-title">Unhurried. Bilingual. Embodied.</h2>
+      <p class="page-sub">We speak the way water moves through stone — slowly, warmly, always finding the body. Short sentences. Sensory verbs. Spanish and English side by side, never translated word-for-word.</p>
+    </div>
+  </div>
+
+  <div class="voice-grid">
+    <div class="voice-card">
+      <div class="tag">Principle 01</div>
+      <h4>Pocas palabras,<br/>mucho silencio.</h4>
+      <p>Leave space. A caption of six words beats a paragraph. White space is a design element and a feeling.</p>
+    </div>
+    <div class="voice-card">
+      <div class="tag">Principle 02</div>
+      <h4>Invita al cuerpo.</h4>
+      <p>Use verbs you can feel — respira, descansa, hunde, tibia, cerrado. Avoid corporate wellness vocabulary.</p>
+    </div>
+    <div class="voice-card">
+      <div class="tag">Principle 03</div>
+      <h4>Bilingüe,<br/>nunca traducido.</h4>
+      <p>English and Spanish live together. Each says what it says best. We never translate line for line.</p>
+    </div>
+  </div>
+
+  <div class="mt-xl" style="background:var(--forest-deep);color:var(--cream);padding:56px;border-radius:3px">
+    <div class="eyebrow" style="color:var(--sage)">Sample copy</div>
+    <h3 style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:42px;margin-top:14px;line-height:1.15;max-width:780px">
+      Cierra los ojos. <em style="color:var(--clay)">Close the door behind you.</em> Aquí no hay prisa que te alcance.
+    </h3>
+    <div style="margin-top:28px;font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--bone);opacity:.7">— voicemail greeting, front desk</div>
+  </div>
+</section>
+
+<!-- ============== COLLATERAL ============== -->
+<section class="page" data-page="collat" data-screen-label="07 Collateral">
+  <div class="section-head">
+    <div>
+      <div class="eyebrow">07 · Collateral</div>
+      <h2 class="page-title">The brand in the hand.</h2>
+      <p class="page-sub">Stationery, signage, apothecary, linen, and menu — the places guests meet the mark in real life.</p>
+    </div>
+  </div>
+
+  <!-- Business cards -->
+  <div class="collat-grid">
+    <div class="collat bizcard-wrap">
+      <div class="pill">Stationery</div>
+      <div class="bizcard">
+        <div class="bc-top">
+          <div>
+            <div class="bc-name">Samantha Ríos</div>
+            <div class="bc-role">Spa Director · Hostess</div>
+          </div>
+          <div id="bc-monogram"></div>
+        </div>
+        <div class="bc-info">
+          Carretera de la Sierra km 12<br/>
+          +34 612 84 00 21 · hola@casadesammy.es
+        </div>
+      </div>
+      <div class="bizcard back">
+        <div style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:30px;color:var(--clay);text-align:center;line-height:1.1">
+          tu segunda<br/>casa.
+        </div>
+      </div>
+    </div>
+
+    <div class="collat sign-scene">
+      <div class="pill">Entrance Signage</div>
+      <div class="sign">
+        <div class="sign-inner">
+          <div style="font-family:'Italiana',serif;font-size:10px;letter-spacing:.4em;color:var(--sage);margin-bottom:14px">EST · MMXXVI</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:42px;color:var(--cream);line-height:.95">Casa de <em style="color:var(--clay)">Sammy</em></div>
+          <div style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:16px;color:var(--bone);margin-top:8px;opacity:.8">tu segunda casa</div>
+          <div style="width:34px;height:1px;background:var(--sage);margin:18px auto 0"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottles / Apothecary -->
+  <div class="collat bottle-scene" style="margin-top:28px;aspect-ratio:auto;min-height:430px">
+    <div class="pill" style="color:var(--ink)">Apothecary</div>
+    <div class="bottle">
+      <div class="bottle-label">
+        <div class="bl-tag">Nº 01 · Body Oil</div>
+        <div class="bl-name">Montaña<br/><em>Mountain</em></div>
+        <div class="bl-foot">100ml · Romero · Pino</div>
+      </div>
+    </div>
+    <div class="bottle green">
+      <div class="bottle-label">
+        <div class="bl-tag">Nº 02 · Bath Salt</div>
+        <div class="bl-name">Niebla<br/><em>Mist</em></div>
+        <div class="bl-foot">240g · Eucalipto · Sal</div>
+      </div>
+    </div>
+    <div class="bottle amber">
+      <div class="bottle-label">
+        <div class="bl-tag">Nº 03 · Face Tonic</div>
+        <div class="bl-name">Tibia<br/><em>Warm</em></div>
+        <div class="bl-foot">50ml · Miel · Camomila</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Menu + Robe row -->
+  <div class="collat-grid" style="margin-top:28px">
+    <div class="collat menu-scene tall">
+      <div class="pill">Spa Menu</div>
+      <div class="menu">
+        <div style="font-family:'Italiana',serif;font-size:9px;letter-spacing:.4em;text-align:center;color:var(--stone)">RITUALES · 2026</div>
+        <h3>Carta de<br/>rituales.</h3>
+        <div class="menu-sub">·  the ritual menu  ·</div>
+        <div class="menu-hr"></div>
+        <ul>
+          <li><span>Baño de niebla</span><em></em><span>90 min</span></li>
+          <li><span>Tibia, tibia</span><em></em><span>60 min</span></li>
+          <li><span>Piedra de río</span><em></em><span>75 min</span></li>
+          <li><span>Ritual de la tarde</span><em></em><span>120 min</span></li>
+          <li><span>Segundo sueño</span><em></em><span>150 min</span></li>
+          <li><span>Domingo lento</span><em></em><span>all day</span></li>
+        </ul>
+        <div style="text-align:center;font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--clay);font-size:14px;margin-top:auto">— tu segunda casa —</div>
+      </div>
+    </div>
+
+    <div class="collat robe-scene tall">
+      <div class="pill">Linen & Robe</div>
+      <div class="robe">
+        <div id="robe-mono" style="margin-bottom:20%"></div>
+        <div style="font-family:'Italiana',serif;font-size:10px;letter-spacing:.45em;color:var(--stone)">CASA · DE · SAMMY</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tote/Website strip -->
+  <div class="collat-grid" style="margin-top:28px">
+    <div class="collat" style="background:#e6dcc6;aspect-ratio:4/3">
+      <div class="pill">Tote</div>
+      <div style="width:62%;aspect-ratio:4/5;background:#d8cdb2;position:relative;padding:36px 20px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px">
+        <div style="position:absolute;top:-14px;left:18%;right:55%;height:40%;border:2px solid #d8cdb2;border-bottom:none;background:transparent;border-radius:50% 50% 0 0"></div>
+        <div style="position:absolute;top:-14px;left:55%;right:18%;height:40%;border:2px solid #d8cdb2;border-bottom:none;background:transparent;border-radius:50% 50% 0 0"></div>
+        <div style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:44px;color:var(--forest);text-align:center;line-height:.95">tu<br/>segunda<br/>casa.</div>
+      </div>
+    </div>
+
+    <div class="collat" style="background:var(--forest-deep);aspect-ratio:4/3;padding:0;overflow:hidden">
+      <div class="pill">Web · /reserva</div>
+      <div style="width:90%;aspect-ratio:16/10;background:var(--cream);border-radius:6px 6px 0 0;overflow:hidden;box-shadow:0 30px 60px rgba(0,0,0,.4);display:flex;flex-direction:column">
+        <div style="height:22px;background:#eae2d0;display:flex;align-items:center;padding:0 10px;gap:5px">
+          <div style="width:8px;height:8px;border-radius:50%;background:#d0c7b3"></div>
+          <div style="width:8px;height:8px;border-radius:50%;background:#d0c7b3"></div>
+          <div style="width:8px;height:8px;border-radius:50%;background:#d0c7b3"></div>
+          <div style="flex:1;text-align:center;font-size:8px;color:var(--stone);letter-spacing:.2em">casadesammy.es</div>
+        </div>
+        <div style="flex:1;padding:20px 26px;display:flex;flex-direction:column;justify-content:space-between">
+          <div style="display:flex;justify-content:space-between;align-items:center;font-size:8px;letter-spacing:.24em;text-transform:uppercase;color:var(--stone)">
+            <span style="font-family:'Italiana',serif;color:var(--forest);letter-spacing:.2em">CASA DE SAMMY</span>
+            <span>Rituales · Estancia · Reserva</span>
+          </div>
+          <div style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:42px;color:var(--forest);line-height:.95">
+            Respira.<br/><em style="color:var(--clay)">Descansa.</em><br/>Vuelve.
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:flex-end">
+            <div style="font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--stone);font-size:13px">tu segunda casa</div>
+            <div style="background:var(--forest);color:var(--cream);padding:8px 18px;font-size:9px;letter-spacing:.24em;text-transform:uppercase">Reservar →</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== RULES ============== -->
+<section class="page" data-page="rules" data-screen-label="08 Rules">
+  <div class="section-head">
+    <div>
+      <div class="eyebrow">08 · Do's & Don'ts</div>
+      <h2 class="page-title">Guardrails.</h2>
+      <p class="page-sub">Small decisions, made often, that keep the brand whole.</p>
+    </div>
+  </div>
+
+  <div class="rules-grid">
+    <div class="rule">
+      <div class="rule-ico"><svg width="32" height="32" viewBox="0 0 32 32"><path d="M6 17l5 5 15-15" stroke="#2B3A2E" stroke-width="2" fill="none"/></svg></div>
+      <div><div class="hd">Let the mark breathe.</div><p>Generous clearspace — always at least the x-height of the wordmark on all sides.</p></div>
+    </div>
+    <div class="rule no">
+      <div class="rule-ico x"><svg width="32" height="32" viewBox="0 0 32 32"><path d="M8 8l16 16M24 8L8 24" stroke="#C9725A" stroke-width="2"/></svg></div>
+      <div><div class="hd">Never stretch.</div><p>No condensing, skewing, or rotating the logo. Scale proportionally.</p></div>
+    </div>
+    <div class="rule">
+      <div class="rule-ico"><svg width="32" height="32" viewBox="0 0 32 32"><path d="M6 17l5 5 15-15" stroke="#2B3A2E" stroke-width="2" fill="none"/></svg></div>
+      <div><div class="hd">Pair serif with sans.</div><p>Cormorant + Inter only. No substitutions. Italiana reserved for signatures.</p></div>
+    </div>
+    <div class="rule no">
+      <div class="rule-ico x"><svg width="32" height="32" viewBox="0 0 32 32"><path d="M8 8l16 16M24 8L8 24" stroke="#C9725A" stroke-width="2"/></svg></div>
+      <div><div class="hd">No bright accents.</div><p>Never place the mark on saturated backgrounds — no primary red, blue, or yellow. Earth tones only.</p></div>
+    </div>
+    <div class="rule">
+      <div class="rule-ico"><svg width="32" height="32" viewBox="0 0 32 32"><path d="M6 17l5 5 15-15" stroke="#2B3A2E" stroke-width="2" fill="none"/></svg></div>
+      <div><div class="hd">Spanish first.</div><p>On bilingual materials, Spanish leads. English follows, in italic or lighter weight.</p></div>
+    </div>
+    <div class="rule no">
+      <div class="rule-ico x"><svg width="32" height="32" viewBox="0 0 32 32"><path d="M8 8l16 16M24 8L8 24" stroke="#C9725A" stroke-width="2"/></svg></div>
+      <div><div class="hd">No emoji, no gradients.</div><p>Keep surfaces flat and typographic. Let texture come from paper, linen, and photography.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== SCRIPT ============== -->
+<script>
+  // Tabs
+  const tabs = document.querySelectorAll('#tabs button');
+  const pages = document.querySelectorAll('section.page');
+  const KEY = 'casa_sammy_tab';
+  function setTab(t){
+    tabs.forEach(b=>b.classList.toggle('active', b.dataset.t===t));
+    pages.forEach(p=>p.classList.toggle('active', p.dataset.page===t));
+    localStorage.setItem(KEY,t);
+    window.scrollTo({top:0,behavior:'instant'});
+  }
+  tabs.forEach(b=>b.addEventListener('click',()=>setTab(b.dataset.t)));
+  const saved = localStorage.getItem(KEY);
+  if(saved) setTab(saved);
+
+  // ============ SVG LOGOS ============
+  // Primary emblem — arch of rays over a ridge, with wordmark
+  function primaryMark(color, clay, accent){
+    color = color || '#F4EFE4';
+    clay = clay || '#B8975A';
+    accent = accent || '#8FA083';
+    return `<svg viewBox="0 0 300 320" xmlns="http://www.w3.org/2000/svg" class="logo-primary">
+      <!-- sun arch with rays -->
+      <g transform="translate(150 120)">
+        <circle r="58" fill="none" stroke="${color}" stroke-width=".8" opacity=".4"/>
+        <g stroke="${color}" stroke-width="1.2" stroke-linecap="round">
+          ${Array.from({length:19}).map((_,i)=>{
+            const a=(-90 + (i-9)*9)*Math.PI/180;
+            const r1=44, r2=72;
+            return `<line x1="${Math.cos(a)*r1}" y1="${Math.sin(a)*r1}" x2="${Math.cos(a)*r2}" y2="${Math.sin(a)*r2}"/>`;
+          }).join('')}
+        </g>
+        <!-- horizon -->
+        <rect x="-80" y="0" width="160" height="80" fill="${color}" opacity="0"/>
+        <path d="M-80 0 L80 0" stroke="${color}" stroke-width="1"/>
+      </g>
+      <!-- ridgelines -->
+      <g transform="translate(0 120)">
+        <path d="M30 60 L90 10 L120 35 L150 -10 L180 35 L210 15 L270 60 Z" fill="${color}"/>
+        <path d="M30 60 L90 10 L120 35 L150 -10 L180 35 L210 15 L270 60" fill="none" stroke="${color}" stroke-width="1"/>
+        <!-- little house in center notch -->
+        <path d="M140 22 L150 12 L160 22 L160 32 L140 32 Z" fill="${color==='#F4EFE4'?'#2B3A2E':'#F4EFE4'}"/>
+      </g>
+      <!-- wordmark -->
+      <g transform="translate(150 232)" text-anchor="middle">
+        <text font-family="Italiana, serif" font-size="18" letter-spacing="4" fill="${color}">CASA · DE</text>
+        <text y="40" font-family="Cormorant Garamond, serif" font-style="italic" font-weight="300" font-size="54" fill="${clay}">Sammy</text>
+        <line x1="-60" x2="-30" y1="62" y2="62" stroke="${color}" opacity=".5"/>
+        <line x1="30" x2="60" y1="62" y2="62" stroke="${color}" opacity=".5"/>
+        <text y="72" font-family="Cormorant Garamond, serif" font-style="italic" font-size="14" fill="${color}" opacity=".85">tu segunda casa</text>
+      </g>
+    </svg>`;
+  }
+
+  // Horizontal lockup
+  function horizLockup(color, clay){
+    color = color || '#2B3A2E';
+    clay = clay || '#B8975A';
+    return `<svg viewBox="0 0 420 120" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:380px;height:auto">
+      <!-- mini emblem -->
+      <g transform="translate(60 60)">
+        <g stroke="${color}" stroke-width="1" stroke-linecap="round">
+          ${Array.from({length:13}).map((_,i)=>{
+            const a=(-90 + (i-6)*12)*Math.PI/180;
+            const r1=22, r2=42;
+            return `<line x1="${Math.cos(a)*r1}" y1="${Math.sin(a)*r1}" x2="${Math.cos(a)*r2}" y2="${Math.sin(a)*r2}"/>`;
+          }).join('')}
+        </g>
+        <path d="M-36 20 L-12 -6 L0 8 L14 -10 L36 20 Z" fill="${color}"/>
+      </g>
+      <!-- text -->
+      <g transform="translate(130 44)">
+        <text font-family="Italiana, serif" font-size="14" letter-spacing="3.5" fill="${color}">CASA DE</text>
+        <text y="36" font-family="Cormorant Garamond, serif" font-style="italic" font-weight="300" font-size="44" fill="${clay}">Sammy</text>
+        <text y="60" font-family="Cormorant Garamond, serif" font-style="italic" font-size="12" fill="${color}" opacity=".7">tu segunda casa</text>
+      </g>
+    </svg>`;
+  }
+
+  // Wordmark only
+  function wordmark(color, clay){
+    color = color || '#2B3A2E'; clay = clay || '#B8975A';
+    return `<svg viewBox="0 0 380 150" style="width:100%;max-width:320px">
+      <g transform="translate(190 45)" text-anchor="middle">
+        <text font-family="Italiana, serif" font-size="18" letter-spacing="5" fill="${color}">CASA   ·   DE</text>
+        <text y="58" font-family="Cormorant Garamond, serif" font-style="italic" font-weight="300" font-size="74" fill="${clay}">Sammy</text>
+        <line x1="-50" x2="-18" y1="82" y2="82" stroke="${color}" opacity=".5"/>
+        <line x1="18" x2="50" y1="82" y2="82" stroke="${color}" opacity=".5"/>
+        <text y="96" font-family="Cormorant Garamond, serif" font-style="italic" font-size="15" fill="${color}" opacity=".85">tu segunda casa</text>
+      </g>
+    </svg>`;
+  }
+
+  // Monogram C+S
+  function monogram(color, clay, bg){
+    color = color || '#2B3A2E'; clay = clay || '#B8975A';
+    return `<svg viewBox="0 0 200 200" style="width:180px;height:180px">
+      <circle cx="100" cy="100" r="88" fill="none" stroke="${color}" stroke-width="1" opacity=".35"/>
+      <circle cx="100" cy="100" r="80" fill="none" stroke="${color}" stroke-width=".5" opacity=".3"/>
+      <g transform="translate(100 110)" text-anchor="middle">
+        <text font-family="Cormorant Garamond, serif" font-style="italic" font-weight="300" font-size="120" fill="${color}">C</text>
+        <text x="14" y="-4" font-family="Cormorant Garamond, serif" font-style="italic" font-weight="300" font-size="120" fill="${clay}">s</text>
+      </g>
+      <text x="100" y="180" text-anchor="middle" font-family="Italiana,serif" font-size="9" letter-spacing="3" fill="${color}">EST · MMXXVI</text>
+    </svg>`;
+  }
+
+  // Stamp / Seal
+  function stamp(color){
+    color = color || '#F4EFE4';
+    return `<svg viewBox="0 0 200 200" style="width:180px;height:180px">
+      <circle cx="100" cy="100" r="94" fill="none" stroke="${color}" stroke-width=".8"/>
+      <circle cx="100" cy="100" r="86" fill="none" stroke="${color}" stroke-width=".4"/>
+      <defs><path id="top" d="M 20 100 A 80 80 0 0 1 180 100"/><path id="bot" d="M 20 100 A 80 80 0 0 0 180 100"/></defs>
+      <text font-family="Italiana,serif" font-size="10" letter-spacing="5" fill="${color}"><textPath href="#top" startOffset="50%" text-anchor="middle">CASA · DE · SAMMY</textPath></text>
+      <text font-family="Italiana,serif" font-size="8" letter-spacing="3" fill="${color}"><textPath href="#bot" startOffset="50%" text-anchor="middle">·  SPA   ·   RETREAT   ·   RITUAL  ·</textPath></text>
+      <g transform="translate(100 108)" stroke="${color}" stroke-width="1" stroke-linecap="round" fill="none">
+        ${Array.from({length:11}).map((_,i)=>{
+          const a=(-90 + (i-5)*14)*Math.PI/180;
+          const r1=10, r2=24;
+          return `<line x1="${Math.cos(a)*r1}" y1="${Math.sin(a)*r1}" x2="${Math.cos(a)*r2}" y2="${Math.sin(a)*r2}"/>`;
+        }).join('')}
+        <path d="M-22 10 L-6 -6 L2 4 L12 -10 L22 10 Z" fill="${color}" stroke="none"/>
+      </g>
+    </svg>`;
+  }
+
+  // Vertical tall wordmark (spine / signage)
+  function vertical(color, clay){
+    color = color || '#F4EFE4'; clay = clay || '#B8975A';
+    return `<svg viewBox="0 0 120 320" style="width:120px;height:300px">
+      <line x1="60" y1="8" x2="60" y2="38" stroke="${color}" opacity=".5"/>
+      <g transform="translate(60 60) rotate(-90)" text-anchor="middle">
+        <text font-family="Italiana,serif" font-size="14" letter-spacing="6" fill="${color}">CASA DE SAMMY</text>
+      </g>
+      <g transform="translate(60 200)" text-anchor="middle">
+        <text font-family="Cormorant Garamond, serif" font-style="italic" font-weight="300" font-size="36" fill="${clay}">S</text>
+      </g>
+      <text x="60" y="260" text-anchor="middle" font-family="Cormorant Garamond,serif" font-style="italic" font-size="11" fill="${color}" opacity=".8" transform="rotate(-90 60 260)">tu segunda casa</text>
+      <line x1="60" y1="282" x2="60" y2="312" stroke="${color}" opacity=".5"/>
+    </svg>`;
+  }
+
+  // Populate primary cover mark
+  document.getElementById('primary-mark').innerHTML = primaryMark('#F4EFE4','#B8975A');
+
+  // Populate logo grid
+  const logoDefs = [
+    {cls:'',        lbl:'Primary Emblem',  no:'01', cap:'Full lockup · Emblem + word + tagline', render:primaryMark('#2B3A2E','#B8975A')},
+    {cls:'dark',    lbl:'Horizontal',      no:'02', cap:'For wide applications · Letterhead',    render:horizLockup('#F4EFE4','#B8975A')},
+    {cls:'',        lbl:'Wordmark',        no:'03', cap:'Type-only · Press & editorial',         render:wordmark('#2B3A2E','#B8975A')},
+    {cls:'clay',    lbl:'Monogram',        no:'04', cap:'Social avatar · Small applications',    render:monogram('#F4EFE4','#2B3A2E','#B88A5E')},
+    {cls:'dark',    lbl:'Seal',            no:'05', cap:'Authenticity · Packaging · Foil',       render:stamp('#F4EFE4')},
+    {cls:'sage',    lbl:'Vertical',        no:'06', cap:'Spine · Wayfinding · Banner',           render:vertical('#2B3A2E','#1C2620')},
+  ];
+  document.getElementById('logoGrid').innerHTML = logoDefs.map(d=>`
+    <div class="logo-card ${d.cls}">
+      <span class="lbl">${d.lbl}</span>
+      <span class="no">${d.no}</span>
+      <div class="logo-stage">${d.render}</div>
+      <div class="logo-caption">${d.cap}</div>
+    </div>
+  `).join('');
+
+  // Clearspace demo
+  document.getElementById('clearspace').innerHTML = `
+    <div style="position:relative;padding:40px">
+      <div style="position:absolute;inset:0;border:1px dashed rgba(20,22,18,.3)"></div>
+      <div style="position:absolute;inset:20px;border:1px dashed rgba(184,138,94,.5)"></div>
+      ${horizLockup('#2B3A2E','#B8975A')}
+    </div>`;
+  document.getElementById('reversed').innerHTML = horizLockup('#F4EFE4','#B8975A');
+
+  // Business card monogram
+  document.getElementById('bc-monogram').innerHTML = `
+    <svg viewBox="0 0 40 40" width="36" height="36">
+      <circle cx="20" cy="20" r="18" fill="none" stroke="#2B3A2E" stroke-width=".5"/>
+      <text x="20" y="28" text-anchor="middle" font-family="Cormorant Garamond,serif" font-style="italic" font-size="26" fill="#B8975A">s</text>
+    </svg>`;
+
+  // Robe monogram
+  document.getElementById('robe-mono').innerHTML = `
+    <svg viewBox="0 0 120 80" width="120" height="80">
+      <text x="60" y="50" text-anchor="middle" font-family="Cormorant Garamond,serif" font-style="italic" font-size="50" fill="#2B3A2E">Cs</text>
+      <line x1="40" x2="80" y1="64" y2="64" stroke="#B8975A" stroke-width=".6"/>
+      <text x="60" y="76" text-anchor="middle" font-family="Italiana,serif" font-size="6" letter-spacing="2" fill="#7A766D">TU SEGUNDA CASA</text>
+    </svg>`;
+
+</script>
+</body>
+</html>

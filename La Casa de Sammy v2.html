@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>La Casa de Sammy — Variaciones</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=DM+Serif+Display:ital@0;1&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400&family=Caveat:wght@400;600&family=Work+Sans:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  html, body { margin: 0; padding: 0; background: #1a1814; font-family: 'Inter', system-ui, sans-serif; color: #ece4d3; }
+  .page { max-width: 1320px; margin: 0 auto; padding: 48px 20px 80px; }
+  .intro { padding: 24px 20px 40px; text-align: center; }
+  .intro h1 { font-family: 'Fraunces', Georgia, serif; font-weight: 400; font-size: 44px; margin: 0 0 12px; letter-spacing: -1px; }
+  .intro p { margin: 0 auto; max-width: 640px; opacity: 0.7; font-size: 15px; line-height: 1.6; }
+  .variant { margin: 80px 0 0; }
+  .variant-head { display: flex; align-items: baseline; gap: 18px; margin-bottom: 24px; padding-bottom: 18px; border-bottom: 1px solid rgba(236,228,211,0.15); }
+  .variant-num { font-family: ui-monospace, Menlo, monospace; font-size: 13px; letter-spacing: 2px; color: #c47a4f; }
+  .variant-name { font-family: 'Fraunces', Georgia, serif; font-weight: 400; font-size: 32px; letter-spacing: -0.5px; margin: 0; }
+  .variant-desc { margin-left: auto; font-size: 13px; opacity: 0.6; max-width: 360px; text-align: right; }
+  .variant-frame { border-radius: 6px; overflow: hidden; box-shadow: 0 24px 60px rgba(0,0,0,0.5); background: #fff; }
+  .variant-frame > div { width: 100% !important; }
+</style>
+</head>
+<body>
+<div id="root"></div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+<script type="text/babel" src="shared.jsx"></script>
+<script type="text/babel" src="var-hacienda.jsx"></script>
+<script type="text/babel" src="var-cuaderno.jsx"></script>
+<script type="text/babel" src="var-valle-sagrado.jsx"></script>
+
+<script type="text/babel">
+function App() {
+  const variants = [
+    { id: 'hacienda', num: '01', name: 'Hacienda',         desc: 'Clásico cálido. Serif grande, hero full-bleed, paleta arcilla y crema.', Comp: VarHacienda },
+    { id: 'cuaderno', num: '02', name: 'Cuaderno de viaje', desc: 'Editorial tipo bitácora. Collage con cintas, sellos y notas a mano.',     Comp: VarCuaderno },
+    { id: 'valle',    num: '03', name: 'Valle Sagrado',     desc: 'Moderno rústico. Verdes profundos, geometría andina sutil, asimetría.',   Comp: VarValleSagrado },
+  ];
+  return (
+    <div className="page">
+      <div className="intro">
+        <h1>La Casa de Sammy — 3 direcciones</h1>
+        <p>Tres propuestas distintas para la homepage de la casa rural en Vilcabamba. Mira las tres y dime cuál te gusta más (o qué mezclar de cada una).</p>
+      </div>
+      {variants.map(v => (
+        <section key={v.id} id={v.id} className="variant">
+          <div className="variant-head">
+            <span className="variant-num">{v.num}</span>
+            <h2 className="variant-name">{v.name}</h2>
+            <span className="variant-desc">{v.desc}</span>
+          </div>
+          <div className="variant-frame">
+            <v.Comp />
+          </div>
+        </section>
+      ))}
+    </div>
+  );
+}
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+</body>
+</html>

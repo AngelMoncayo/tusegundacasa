@@ -1,0 +1,588 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>SICAF · Manual de Compras Públicas EPMHV</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    /* GovTech institutional palette — navy + civic blue */
+    --ink-900:#0A1628;           /* almost-black navy */
+    --ink-800:#0F1F3A;
+    --ink-700:#152A4E;
+    --ink-600:#1E3A6B;
+    --navy:#0B2B5C;              /* primary institutional */
+    --civic:#1E40AF;             /* civic blue accent */
+    --civic-bright:#2563EB;
+    --sky:#3B82F6;
+    --sky-soft:#DBEAFE;
+
+    --amber:#B45309;             /* alert / deadlines */
+    --amber-bright:#D97706;
+    --amber-soft:#FEF3C7;
+    --green:#047857;             /* confirm / vigente */
+    --green-soft:#D1FAE5;
+    --crimson:#9F1239;           /* critical */
+
+    --paper:#F6F7FB;             /* canvas */
+    --paper-2:#EEF1F7;
+    --line:rgba(11,43,92,.12);
+    --line-soft:rgba(11,43,92,.06);
+    --muted:#475569;
+    --muted-2:#64748B;
+    --white:#FFFFFF;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:var(--paper);color:var(--ink-900);font-family:'IBM Plex Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased;line-height:1.5}
+  .display{font-family:'Bricolage Grotesque',sans-serif;letter-spacing:-.02em;line-height:1;font-weight:600}
+  .mono{font-family:'IBM Plex Mono',monospace}
+  .eyebrow{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted-2);font-weight:500}
+
+  /* ========== TOP BAR ========== */
+  .topbar{position:sticky;top:0;z-index:80;background:var(--ink-900);color:#E8EEF8;border-bottom:1px solid rgba(255,255,255,.06)}
+  .topbar-inner{max-width:1680px;margin:0 auto;padding:0 28px;height:54px;display:flex;align-items:center;gap:24px}
+  .brand{display:flex;align-items:center;gap:10px}
+  .brand-mark{width:28px;height:28px;border-radius:6px;background:linear-gradient(135deg,#2563EB 0%,#0B2B5C 100%);display:grid;place-items:center;color:#fff;font-family:'Bricolage Grotesque';font-weight:700;font-size:14px;letter-spacing:-.05em;box-shadow:inset 0 0 0 1px rgba(255,255,255,.15)}
+  .brand-name{font-family:'Bricolage Grotesque';font-weight:600;font-size:15px;letter-spacing:-.01em}
+  .brand-sub{font-family:'IBM Plex Mono';font-size:10px;color:#94A3B8;letter-spacing:.14em;text-transform:uppercase;margin-left:6px;padding-left:10px;border-left:1px solid rgba(255,255,255,.14)}
+  .top-crumbs{display:flex;gap:10px;align-items:center;font-family:'IBM Plex Mono';font-size:11px;color:#94A3B8;letter-spacing:.08em}
+  .top-crumbs .sep{opacity:.4}
+  .top-crumbs .here{color:#E8EEF8}
+  .top-actions{margin-left:auto;display:flex;align-items:center;gap:10px}
+  .chip-live{display:inline-flex;align-items:center;gap:8px;background:rgba(4,120,87,.15);border:1px solid rgba(16,185,129,.35);color:#6EE7B7;padding:6px 12px;border-radius:999px;font-family:'IBM Plex Mono';font-size:10px;letter-spacing:.16em;text-transform:uppercase}
+  .chip-live::before{content:"";width:7px;height:7px;border-radius:50%;background:#34D399;box-shadow:0 0 0 0 rgba(52,211,153,.6);animation:pulse 2s infinite}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(52,211,153,.6)}70%{box-shadow:0 0 0 8px rgba(52,211,153,0)}100%{box-shadow:0 0 0 0 rgba(52,211,153,0)}}
+  .avatar{width:32px;height:32px;border-radius:50%;background:#1E3A6B;color:#fff;display:grid;place-items:center;font-weight:600;font-size:12px;border:1px solid rgba(255,255,255,.1)}
+
+  /* ========== LAYOUT ========== */
+  .shell{display:grid;grid-template-columns:288px 1fr;max-width:1680px;margin:0 auto;min-height:calc(100vh - 54px)}
+
+  /* ========== SIDEBAR ========== */
+  .side{background:var(--white);border-right:1px solid var(--line);padding:26px 20px 40px}
+  .side-head{padding:0 8px 18px;border-bottom:1px solid var(--line-soft)}
+  .side-eyebrow{font-family:'IBM Plex Mono';font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--navy);font-weight:600}
+  .side-title{font-family:'Bricolage Grotesque';font-size:19px;font-weight:600;letter-spacing:-.015em;margin-top:6px;line-height:1.15;color:var(--ink-900)}
+  .side-meta{font-family:'IBM Plex Mono';font-size:10.5px;color:var(--muted-2);letter-spacing:.06em;margin-top:8px}
+  .side-meta span{color:var(--ink-700);font-weight:500}
+
+  .progress-card{margin:18px 0 22px;padding:16px;background:linear-gradient(180deg,#F8FAFF 0%,#EEF3FB 100%);border:1px solid var(--line);border-radius:12px;position:relative;overflow:hidden}
+  .progress-card::before{content:"";position:absolute;inset:0;background-image:radial-gradient(circle at 1px 1px,rgba(11,43,92,.08) 1px,transparent 0);background-size:12px 12px;opacity:.5;pointer-events:none}
+  .pc-head{display:flex;align-items:baseline;justify-content:space-between;position:relative}
+  .pc-label{font-family:'IBM Plex Mono';font-size:9.5px;letter-spacing:.2em;color:var(--muted-2);text-transform:uppercase}
+  .pc-num{font-family:'Bricolage Grotesque';font-size:28px;font-weight:600;color:var(--navy);letter-spacing:-.02em}
+  .pc-sub{font-family:'IBM Plex Mono';font-size:10.5px;color:var(--muted)}
+  .pc-bar{margin-top:10px;height:6px;background:rgba(11,43,92,.08);border-radius:99px;position:relative;overflow:hidden}
+  .pc-fill{position:absolute;inset:0 62% 0 0;background:linear-gradient(90deg,#2563EB,#0B2B5C);border-radius:99px}
+  .pc-points{margin-top:12px;display:flex;align-items:center;gap:8px;padding:8px 10px;background:#fff;border:1px dashed rgba(180,83,9,.35);border-radius:8px;position:relative}
+  .pc-points .star{color:var(--amber-bright);font-family:'Bricolage Grotesque';font-weight:700}
+  .pc-points .ptxt{font-family:'IBM Plex Mono';font-size:10.5px;color:var(--amber);letter-spacing:.05em}
+
+  .nav-group{margin-top:22px}
+  .nav-title{font-family:'IBM Plex Mono';font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted-2);padding:0 10px;margin-bottom:8px}
+  .nav-item{display:flex;gap:12px;align-items:flex-start;padding:10px 10px;border-radius:8px;cursor:pointer;transition:background .15s;position:relative}
+  .nav-item:hover{background:var(--paper-2)}
+  .nav-item.active{background:linear-gradient(90deg,rgba(37,99,235,.08),transparent);border-left:2px solid var(--civic-bright);padding-left:12px}
+  .nav-icon{width:28px;height:28px;border-radius:6px;background:var(--paper-2);display:grid;place-items:center;flex-shrink:0;color:var(--ink-700)}
+  .nav-item.active .nav-icon{background:var(--navy);color:#fff}
+  .nav-text{flex:1;min-width:0}
+  .nav-name{font-size:13px;font-weight:500;color:var(--ink-900);letter-spacing:-.005em}
+  .nav-item.active .nav-name{color:var(--navy);font-weight:600}
+  .nav-desc{font-family:'IBM Plex Mono';font-size:9.5px;color:var(--muted-2);letter-spacing:.04em;margin-top:2px;line-height:1.3}
+  .nav-dot{width:6px;height:6px;border-radius:50%;background:var(--green);margin-top:7px;flex-shrink:0}
+  .nav-dot.pending{background:rgba(11,43,92,.2)}
+
+  /* ========== MAIN ========== */
+  .main{padding:32px 44px 80px;min-width:0}
+
+  .crumbs{font-family:'IBM Plex Mono';font-size:11px;color:var(--muted-2);letter-spacing:.06em;display:flex;gap:10px;align-items:center}
+  .crumbs .here{color:var(--ink-900)}
+  .crumbs .sep{opacity:.4}
+
+  h1.page-title{font-family:'Bricolage Grotesque';font-size:clamp(40px,4.4vw,60px);font-weight:600;letter-spacing:-.025em;line-height:1;color:var(--ink-900);margin-top:12px;max-width:18ch;text-wrap:balance}
+  h1.page-title em{font-style:normal;color:var(--civic-bright);font-weight:600}
+
+  .tags-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:22px}
+  .tag{display:inline-flex;align-items:center;gap:8px;padding:7px 12px;border-radius:999px;font-family:'IBM Plex Mono';font-size:11px;letter-spacing:.06em;font-weight:500;border:1px solid transparent}
+  .tag.ver{background:rgba(180,83,9,.08);color:var(--amber);border-color:rgba(180,83,9,.3)}
+  .tag.meta{background:var(--white);color:var(--ink-700);border-color:var(--line)}
+  .tag.live{background:rgba(4,120,87,.08);color:var(--green);border-color:rgba(4,120,87,.3)}
+  .tag .dot{width:6px;height:6px;border-radius:50%;background:currentColor}
+
+  /* Objective block */
+  .objective{margin-top:30px;background:linear-gradient(135deg,#0B2B5C 0%,#152A4E 60%,#0A1628 100%);color:#E8EEF8;border-radius:16px;padding:28px 32px;position:relative;overflow:hidden}
+  .objective::before{content:"";position:absolute;inset:0;background-image:radial-gradient(circle at 1px 1px,rgba(255,255,255,.06) 1px,transparent 0);background-size:14px 14px;pointer-events:none}
+  .objective::after{content:"§";position:absolute;right:32px;top:12px;font-family:'Bricolage Grotesque';font-size:120px;font-weight:500;color:rgba(255,255,255,.05);line-height:1}
+  .obj-head{display:flex;align-items:center;gap:10px;position:relative;z-index:1}
+  .obj-icon{width:26px;height:26px;border-radius:50%;border:1px solid rgba(255,255,255,.3);display:grid;place-items:center;font-family:'Bricolage Grotesque';font-weight:600;font-size:13px}
+  .obj-label{font-family:'IBM Plex Mono';font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:#94B8F0;font-weight:500}
+  .obj-body{margin-top:14px;font-family:'Bricolage Grotesque';font-size:20px;font-weight:400;line-height:1.45;letter-spacing:-.01em;max-width:85ch;position:relative;z-index:1}
+  .obj-body b{font-weight:600;color:#fff;background:linear-gradient(transparent 60%,rgba(37,99,235,.35) 60%);padding:0 3px}
+  .obj-body code{font-family:'IBM Plex Mono';font-size:15px;background:rgba(255,255,255,.08);padding:1px 6px;border-radius:4px;color:#93C5FD;font-weight:500}
+  .obj-foot{margin-top:20px;padding-top:18px;border-top:1px solid rgba(255,255,255,.1);display:flex;gap:36px;flex-wrap:wrap;position:relative;z-index:1}
+  .obj-stat .n{font-family:'Bricolage Grotesque';font-size:26px;font-weight:600;letter-spacing:-.02em;color:#fff}
+  .obj-stat .l{font-family:'IBM Plex Mono';font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:#94B8F0;margin-top:2px}
+
+  /* Source docs grid */
+  .section-head{display:flex;align-items:baseline;justify-content:space-between;margin:44px 0 18px;gap:20px}
+  .sh-left{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
+  .sh-num{font-family:'IBM Plex Mono';font-size:11px;letter-spacing:.18em;color:var(--civic-bright);font-weight:600}
+  .sh-title{font-family:'Bricolage Grotesque';font-size:22px;font-weight:600;letter-spacing:-.015em;color:var(--ink-900)}
+  .sh-rule{flex:1;height:1px;background:var(--line);min-width:40px}
+  .sh-right{font-family:'IBM Plex Mono';font-size:10.5px;color:var(--muted-2);letter-spacing:.1em;text-transform:uppercase;white-space:nowrap}
+
+  .docs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  .doc{background:#fff;border:1px solid var(--line);border-radius:14px;padding:22px 22px 20px;position:relative;overflow:hidden;transition:.2s;display:flex;flex-direction:column;gap:14px;min-height:240px}
+  .doc:hover{transform:translateY(-2px);box-shadow:0 12px 28px -18px rgba(11,43,92,.25);border-color:rgba(11,43,92,.2)}
+  .doc-stripe{position:absolute;top:0;left:0;right:0;height:4px}
+  .doc.p .doc-stripe{background:var(--navy)}
+  .doc.n .doc-stripe{background:var(--amber-bright)}
+  .doc.g .doc-stripe{background:var(--green)}
+  .doc-kind{display:inline-flex;align-items:center;gap:8px;align-self:flex-start;padding:5px 10px;border-radius:5px;font-family:'IBM Plex Mono';font-size:10px;letter-spacing:.16em;text-transform:uppercase;font-weight:600}
+  .doc.p .doc-kind{background:rgba(11,43,92,.08);color:var(--navy)}
+  .doc.n .doc-kind{background:rgba(180,83,9,.1);color:var(--amber)}
+  .doc.g .doc-kind{background:rgba(4,120,87,.1);color:var(--green)}
+  .doc-title{font-family:'Bricolage Grotesque';font-size:18px;font-weight:600;letter-spacing:-.015em;color:var(--ink-900);line-height:1.2}
+  .doc-body{font-size:13px;color:var(--muted);line-height:1.55}
+  .doc-body b{color:var(--ink-900);font-weight:600}
+  .doc-foot{margin-top:auto;padding-top:12px;border-top:1px dashed var(--line);display:flex;justify-content:space-between;align-items:center;font-family:'IBM Plex Mono';font-size:10.5px;color:var(--muted-2);letter-spacing:.08em}
+  .doc-foot .link{color:var(--civic-bright);font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+
+  /* Deadlines timeline */
+  .deadline-wrap{margin-top:18px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px;position:relative}
+  .dl-ribbon{position:absolute;top:-10px;left:24px;background:var(--ink-900);color:#fff;padding:5px 12px;border-radius:4px;font-family:'IBM Plex Mono';font-size:10px;letter-spacing:.18em;text-transform:uppercase;font-weight:500}
+  .dl-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:12px;border-left:1px dashed var(--line)}
+  .dl{padding:16px 20px;border-right:1px dashed var(--line);position:relative;display:flex;flex-direction:column;gap:10px;min-height:170px}
+  .dl:last-child{border-right:none}
+  .dl-flag{display:inline-flex;align-items:center;gap:6px;align-self:flex-start;padding:3px 8px;border-radius:4px;font-family:'IBM Plex Mono';font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;font-weight:600}
+  .dl.crit .dl-flag{background:rgba(159,18,57,.1);color:var(--crimson)}
+  .dl.warn .dl-flag{background:rgba(180,83,9,.12);color:var(--amber)}
+  .dl.info .dl-flag{background:rgba(30,64,175,.1);color:var(--civic)}
+  .dl-flag::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor}
+  .dl-date{font-family:'Bricolage Grotesque';font-weight:600;letter-spacing:-.03em;line-height:.9;color:var(--ink-900)}
+  .dl-date .d{font-size:48px}
+  .dl-date .m{font-size:14px;letter-spacing:.06em;text-transform:uppercase;color:var(--civic-bright);display:block;margin-top:6px;font-weight:500}
+  .dl.crit .dl-date .d{color:var(--crimson)}
+  .dl.warn .dl-date .d{color:var(--amber-bright)}
+  .dl-body{font-size:12.5px;color:var(--muted);line-height:1.5;margin-top:auto}
+  .dl-body b{color:var(--ink-900);font-weight:600}
+
+  /* Modules */
+  .modules{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:18px}
+  .mod{background:#fff;border:1px solid var(--line);border-radius:14px;padding:22px;display:flex;gap:18px;align-items:flex-start;transition:.2s;cursor:pointer}
+  .mod:hover{border-color:var(--civic-bright);box-shadow:0 10px 24px -18px rgba(37,99,235,.4)}
+  .mod-num{flex-shrink:0;width:54px;height:54px;border-radius:10px;background:var(--paper-2);display:grid;place-items:center;font-family:'Bricolage Grotesque';font-weight:600;font-size:20px;color:var(--navy);letter-spacing:-.02em;position:relative}
+  .mod.done .mod-num{background:var(--navy);color:#fff}
+  .mod.done .mod-num::after{content:"✓";position:absolute;top:-6px;right:-6px;width:18px;height:18px;border-radius:50%;background:var(--green);color:#fff;display:grid;place-items:center;font-size:11px;font-family:'IBM Plex Sans';font-weight:700;border:2px solid #fff}
+  .mod-body{flex:1;min-width:0}
+  .mod-title{font-family:'Bricolage Grotesque';font-size:17px;font-weight:600;letter-spacing:-.01em;color:var(--ink-900);line-height:1.2}
+  .mod-meta{font-family:'IBM Plex Mono';font-size:10.5px;color:var(--muted-2);letter-spacing:.08em;margin-top:6px;text-transform:uppercase}
+  .mod-meta b{color:var(--civic);font-weight:600}
+  .mod-desc{font-size:13px;color:var(--muted);line-height:1.5;margin-top:10px}
+  .mod-foot{margin-top:14px;display:flex;align-items:center;justify-content:space-between;gap:10px}
+  .mod-bar{flex:1;height:4px;background:rgba(11,43,92,.08);border-radius:99px;overflow:hidden;position:relative}
+  .mod-bar span{position:absolute;inset:0;background:linear-gradient(90deg,#2563EB,#0B2B5C);border-radius:99px}
+  .mod-pct{font-family:'IBM Plex Mono';font-size:10.5px;color:var(--ink-700);font-weight:600;letter-spacing:.06em}
+
+  /* Bottom CTA / support */
+  .support{margin-top:44px;display:grid;grid-template-columns:1.3fr 1fr;gap:14px}
+  .sup-card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:24px;position:relative;overflow:hidden}
+  .sup-card.dark{background:linear-gradient(135deg,#0F1F3A 0%,#0B2B5C 100%);color:#E8EEF8;border:none}
+  .sup-label{font-family:'IBM Plex Mono';font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;font-weight:600}
+  .sup-card .sup-label{color:var(--civic)}
+  .sup-card.dark .sup-label{color:#93C5FD}
+  .sup-title{font-family:'Bricolage Grotesque';font-size:22px;font-weight:600;letter-spacing:-.015em;margin-top:8px;line-height:1.2}
+  .sup-card .sup-title{color:var(--ink-900);max-width:22ch}
+  .sup-body{font-size:13px;line-height:1.55;margin-top:10px;max-width:46ch}
+  .sup-card .sup-body{color:var(--muted)}
+  .sup-card.dark .sup-body{color:#CBD5E1}
+  .sup-cta{display:inline-flex;align-items:center;gap:10px;margin-top:18px;padding:10px 16px;border-radius:8px;font-family:'IBM Plex Mono';font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;text-decoration:none;transition:.15s}
+  .sup-card .sup-cta{background:var(--navy);color:#fff}
+  .sup-card .sup-cta:hover{background:var(--civic-bright)}
+  .sup-card.dark .sup-cta{background:rgba(255,255,255,.1);color:#fff;border:1px solid rgba(255,255,255,.2)}
+  .sup-card.dark .sup-cta:hover{background:rgba(255,255,255,.18)}
+  .sup-steps{display:grid;gap:10px;margin-top:16px}
+  .step{display:flex;gap:12px;align-items:flex-start}
+  .step-n{font-family:'IBM Plex Mono';font-weight:600;font-size:11px;color:#93C5FD;letter-spacing:.1em;flex-shrink:0;padding-top:2px;width:24px}
+  .step-t{font-size:13px;color:#E8EEF8;line-height:1.5}
+  .step-t b{color:#fff;font-weight:600}
+
+  /* Footer strip */
+  .foot-strip{margin-top:48px;padding-top:24px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;font-family:'IBM Plex Mono';font-size:10.5px;color:var(--muted-2);letter-spacing:.08em;text-transform:uppercase}
+  .foot-strip b{color:var(--ink-700);font-weight:600}
+
+  /* Small decorative corner marks */
+  .corner-mark{position:absolute;font-family:'IBM Plex Mono';font-size:9px;color:var(--muted-2);letter-spacing:.14em;text-transform:uppercase}
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<header class="topbar">
+  <div class="topbar-inner">
+    <div class="brand">
+      <div class="brand-mark">S</div>
+      <div class="brand-name">SICAF</div>
+      <div class="brand-sub">Sistema de Capacitación · v4.2</div>
+    </div>
+    <div class="top-crumbs">
+      <span>EPMHV</span><span class="sep">›</span>
+      <span>Contratación Pública</span><span class="sep">›</span>
+      <span class="here">Manual Completo</span>
+    </div>
+    <div class="top-actions">
+      <div class="chip-live">Norma MDT-2025-163 · Vigente</div>
+      <div class="avatar">AR</div>
+    </div>
+  </div>
+</header>
+
+<!-- SHELL -->
+<div class="shell">
+
+  <!-- SIDEBAR -->
+  <aside class="side">
+    <div class="side-head">
+      <div class="side-eyebrow">EPMHV · Gestión Administrativa</div>
+      <div class="side-title">Manual de Compras Públicas</div>
+      <div class="side-meta"><span>EPMHV-DTHA-GA-P04</span> · v 3.2</div>
+    </div>
+
+    <div class="progress-card">
+      <div class="pc-head">
+        <div>
+          <div class="pc-label">Progreso del curso</div>
+          <div class="pc-num">38%</div>
+        </div>
+        <div class="pc-sub">3/8 módulos</div>
+      </div>
+      <div class="pc-bar"><div class="pc-fill"></div></div>
+      <div class="pc-points">
+        <span class="star">★</span>
+        <span class="ptxt">150 puntos acumulados</span>
+      </div>
+    </div>
+
+    <div class="nav-group">
+      <div class="nav-title">Introducción</div>
+      <div class="nav-item active">
+        <div class="nav-icon">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h12a4 4 0 0 1 4 4v12H8a4 4 0 0 1-4-4V4z"/><path d="M8 9h8M8 13h6"/></svg>
+        </div>
+        <div class="nav-text">
+          <div class="nav-name">Manual Completo</div>
+          <div class="nav-desc">Objetivos y normativa</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="nav-group">
+      <div class="nav-title">Procedimientos Dinámicos</div>
+      <div class="nav-item">
+        <div class="nav-icon">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 4h3l2 11h11l2-7H7"/><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/></svg>
+        </div>
+        <div class="nav-text">
+          <div class="nav-name">a) Catálogo Electrónico</div>
+          <div class="nav-desc">CE · Portal SERCOP</div>
+        </div>
+        <div class="nav-dot"></div>
+      </div>
+      <div class="nav-item">
+        <div class="nav-icon">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg>
+        </div>
+        <div class="nav-text">
+          <div class="nav-name">b) Subasta Inversa</div>
+          <div class="nav-desc">SIE · Puja electrónica</div>
+        </div>
+        <div class="nav-dot"></div>
+      </div>
+    </div>
+
+    <div class="nav-group">
+      <div class="nav-title">Régimen Común</div>
+      <div class="nav-item">
+        <div class="nav-icon">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M4 10h16M10 4v16"/></svg>
+        </div>
+        <div class="nav-text">
+          <div class="nav-name">a) Licitación</div>
+          <div class="nav-desc">LOSNCP Arts. 44–50</div>
+        </div>
+        <div class="nav-dot pending"></div>
+      </div>
+      <div class="nav-item">
+        <div class="nav-icon">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 4v16M4 8h16M4 16h16"/></svg>
+        </div>
+        <div class="nav-text">
+          <div class="nav-name">b) Concurso Público</div>
+          <div class="nav-desc">LOSNCP Arts. 37–43</div>
+        </div>
+        <div class="nav-dot pending"></div>
+      </div>
+      <div class="nav-item">
+        <div class="nav-icon">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 20V8l8-4 8 4v12"/><path d="M9 20v-6h6v6"/></svg>
+        </div>
+        <div class="nav-text">
+          <div class="nav-name">c) Feria Inclusiva</div>
+          <div class="nav-desc">LOSNCP Art. 60 · EPS/MYPYMES</div>
+        </div>
+        <div class="nav-dot pending"></div>
+      </div>
+      <div class="nav-item">
+        <div class="nav-icon">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 2"/></svg>
+        </div>
+        <div class="nav-text">
+          <div class="nav-name">d) Ínfima Cuantía</div>
+          <div class="nav-desc">Hasta 0,0000002 PIE</div>
+        </div>
+        <div class="nav-dot pending"></div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main">
+
+    <div class="crumbs">
+      <span>EPMHV</span><span class="sep">/</span>
+      <span class="here">Manual Completo</span>
+    </div>
+
+    <h1 class="page-title">Manual <em>Completo</em> de Compras Públicas EPMHV</h1>
+
+    <div class="tags-row">
+      <span class="tag ver"><span class="dot"></span>Enero 2024</span>
+      <span class="tag meta">68 páginas · 5 subprocesos · 176 actividades</span>
+      <span class="tag live"><span class="dot"></span>Normativa vigente 2026</span>
+    </div>
+
+    <!-- OBJECTIVE -->
+    <section class="objective">
+      <div class="obj-head">
+        <div class="obj-icon">§</div>
+        <div class="obj-label">Objetivo General</div>
+      </div>
+      <p class="obj-body">
+        Capacitar a los servidores de la <b>Empresa Pública Municipal de Hábitat y Vivienda (EPMHV)</b>
+        en la correcta aplicación del Manual de Compras Públicas <code>EPMHV-DTHA-GA-P04</code>
+        (enero 2024), garantizando el cumplimiento de la LOSNCP, RGLOSNCP, resoluciones SERCOP y la
+        nueva norma <b>MDT-2025-163</b> vigente desde el <b>1 de enero de 2026</b>.
+      </p>
+      <div class="obj-foot">
+        <div class="obj-stat"><div class="n">176</div><div class="l">Actividades</div></div>
+        <div class="obj-stat"><div class="n">5</div><div class="l">Subprocesos</div></div>
+        <div class="obj-stat"><div class="n">8</div><div class="l">Dimensiones</div></div>
+        <div class="obj-stat"><div class="n">30</div><div class="l">Procesos DMCISP</div></div>
+        <div class="obj-stat"><div class="n">68</div><div class="l">Páginas</div></div>
+      </div>
+    </section>
+
+    <!-- SOURCE DOCUMENTS -->
+    <div class="section-head">
+      <div class="sh-left">
+        <span class="sh-num">01 —</span>
+        <span class="sh-title">Fuentes Normativas</span>
+        <span class="sh-rule"></span>
+      </div>
+      <div class="sh-right">Marco de referencia</div>
+    </div>
+
+    <div class="docs-grid">
+      <article class="doc p">
+        <span class="doc-stripe"></span>
+        <span class="doc-kind">Documento principal</span>
+        <h3 class="doc-title">Manual EPMHV-DTHA-GA-P04</h3>
+        <p class="doc-body">68 páginas · 4 subprocesos · 176 actividades totales. Cubre <b>PAC</b>, <b>Catálogo Electrónico</b>, <b>Ínfima Cuantía</b> y <b>Régimen Especial</b>. Corresponde exactamente a la Dimensión 3 de la Guía Metodológica DMCISP.</p>
+        <div class="doc-foot">
+          <span>Enero 2024</span>
+          <a class="link" href="#">Abrir PDF →</a>
+        </div>
+      </article>
+
+      <article class="doc n">
+        <span class="doc-stripe"></span>
+        <span class="doc-kind">Norma MDT-2025-163</span>
+        <h3 class="doc-title">Modelo de Capacitación del Estado</h3>
+        <p class="doc-body">Vigente desde el <b>1 de enero de 2026</b> · 36 artículos · Modelo de capacidad de 6 niveles. Reemplaza el Acuerdo MDT-2023-265. Establece el nuevo marco para la formación del servicio público ecuatoriano.</p>
+        <div class="doc-foot">
+          <span>Vigente 2026</span>
+          <a class="link" href="#">Ver articulado →</a>
+        </div>
+      </article>
+
+      <article class="doc g">
+        <span class="doc-stripe"></span>
+        <span class="doc-kind">Guía Metodológica DMCISP</span>
+        <h3 class="doc-title">8 Dimensiones · 30 Procesos</h3>
+        <p class="doc-body">110 páginas. El Manual EPMHV corresponde exactamente a la Dimensión 3 <b>"Adquisición de Bienes y Servicios"</b>. La Ilustración 9 de esta guía es el diagrama de referencia del manual.</p>
+        <div class="doc-foot">
+          <span>Referencia técnica</span>
+          <a class="link" href="#">Ver guía →</a>
+        </div>
+      </article>
+    </div>
+
+    <!-- DEADLINES -->
+    <div class="section-head">
+      <div class="sh-left">
+        <span class="sh-num">02 —</span>
+        <span class="sh-title">Plazos Críticos 2026</span>
+        <span class="sh-rule"></span>
+      </div>
+      <div class="sh-right">Calendario obligatorio</div>
+    </div>
+
+    <div class="deadline-wrap">
+      <span class="dl-ribbon">Cronograma SERCOP</span>
+      <div class="dl-grid">
+        <div class="dl crit">
+          <span class="dl-flag">Urgente</span>
+          <div class="dl-date"><span class="d">28</span><span class="m">Mayo 2026</span></div>
+          <p class="dl-body">Fecha límite para carga del <b>PAC reformado</b> en el portal SERCOP. Incumplimiento genera <b>sanción administrativa</b>.</p>
+        </div>
+        <div class="dl warn">
+          <span class="dl-flag">Cierre</span>
+          <div class="dl-date"><span class="d">09</span><span class="m">Junio 2026</span></div>
+          <p class="dl-body">Cierre del período de ajuste del <b>PAC inicial</b>. Después no se admiten modificaciones ordinarias.</p>
+        </div>
+        <div class="dl info">
+          <span class="dl-flag">Anual</span>
+          <div class="dl-date"><span class="d">31</span><span class="m">Enero</span></div>
+          <p class="dl-body">Publicación del <b>PAC inicial</b> en el portal SERCOP. Obligatorio para toda entidad pública.</p>
+        </div>
+        <div class="dl info">
+          <span class="dl-flag">Hábiles</span>
+          <div class="dl-date"><span class="d">15</span><span class="m">Días IC</span></div>
+          <p class="dl-body">Plazo máximo de pago a proveedores en Ínfima Cuantía desde la recepción de factura.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODULES -->
+    <div class="section-head">
+      <div class="sh-left">
+        <span class="sh-num">03 —</span>
+        <span class="sh-title">Módulos del Curso</span>
+        <span class="sh-rule"></span>
+      </div>
+      <div class="sh-right">8 módulos · 12 horas</div>
+    </div>
+
+    <div class="modules">
+      <div class="mod done">
+        <div class="mod-num">01</div>
+        <div class="mod-body">
+          <div class="mod-title">Fundamentos de la LOSNCP</div>
+          <div class="mod-meta">45 min · <b>Completado</b> · 50 pts</div>
+          <p class="mod-desc">Ley Orgánica del Sistema Nacional de Contratación Pública. Principios, ámbito y régimen sancionatorio.</p>
+          <div class="mod-foot">
+            <div class="mod-bar"><span style="right:0"></span></div>
+            <div class="mod-pct">100%</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mod done">
+        <div class="mod-num">02</div>
+        <div class="mod-body">
+          <div class="mod-title">Plan Anual de Contratación</div>
+          <div class="mod-meta">60 min · <b>Completado</b> · 50 pts</div>
+          <p class="mod-desc">Elaboración, aprobación, publicación y reforma del PAC según SERCOP-RE-2023-111.</p>
+          <div class="mod-foot">
+            <div class="mod-bar"><span style="right:0"></span></div>
+            <div class="mod-pct">100%</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mod done">
+        <div class="mod-num">03</div>
+        <div class="mod-body">
+          <div class="mod-title">Catálogo Electrónico</div>
+          <div class="mod-meta">90 min · <b>Completado</b> · 50 pts</div>
+          <p class="mod-desc">Procedimiento obligatorio de orden de compra y exclusiones procedentes en CE.</p>
+          <div class="mod-foot">
+            <div class="mod-bar"><span style="right:0"></span></div>
+            <div class="mod-pct">100%</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mod">
+        <div class="mod-num">04</div>
+        <div class="mod-body">
+          <div class="mod-title">Subasta Inversa Electrónica</div>
+          <div class="mod-meta">90 min · En curso · <b>35%</b></div>
+          <p class="mod-desc">Publicación, calificación, puja y adjudicación. Casos prácticos con convalidación de errores.</p>
+          <div class="mod-foot">
+            <div class="mod-bar"><span style="right:65%"></span></div>
+            <div class="mod-pct">35%</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mod">
+        <div class="mod-num">05</div>
+        <div class="mod-body">
+          <div class="mod-title">Ínfima Cuantía</div>
+          <div class="mod-meta">60 min · Pendiente · 0 pts</div>
+          <p class="mod-desc">Umbral, proveedor único, verificación RUP, plazo de pago y reporte trimestral.</p>
+          <div class="mod-foot">
+            <div class="mod-bar"><span style="right:100%"></span></div>
+            <div class="mod-pct">0%</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mod">
+        <div class="mod-num">06</div>
+        <div class="mod-body">
+          <div class="mod-title">Régimen Especial</div>
+          <div class="mod-meta">75 min · Pendiente · 0 pts</div>
+          <p class="mod-desc">Contratación directa por seguridad, asesoría especializada y convenios interadministrativos.</p>
+          <div class="mod-foot">
+            <div class="mod-bar"><span style="right:100%"></span></div>
+            <div class="mod-pct">0%</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SUPPORT -->
+    <div class="support">
+      <div class="sup-card">
+        <div class="sup-label">Evaluación final</div>
+        <h3 class="sup-title">Certificación oficial MDT-2025-163</h3>
+        <p class="sup-body">Al completar los 8 módulos y aprobar la evaluación con 80/100, obtendrá el certificado oficial del Ministerio del Trabajo, validado por la EPMHV y registrado en el SIITH.</p>
+        <a href="#" class="sup-cta">Ver requisitos →</a>
+      </div>
+      <div class="sup-card dark">
+        <div class="sup-label">Ruta sugerida</div>
+        <h3 class="sup-title">Próximos pasos</h3>
+        <div class="sup-steps">
+          <div class="step"><div class="step-n">01</div><div class="step-t">Termina <b>Subasta Inversa</b> (35% restante).</div></div>
+          <div class="step"><div class="step-n">02</div><div class="step-t">Rinde el <b>quiz del Módulo 4</b> para desbloquear IC.</div></div>
+          <div class="step"><div class="step-n">03</div><div class="step-t">Agenda la <b>práctica guiada</b> en el portal SERCOP.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="foot-strip">
+      <div>SICAF · Sistema de Capacitación Administrativa y Financiera</div>
+      <div>Última revisión <b>22.04.2026</b> · Responsable <b>DTHA-GA</b></div>
+      <div>Código <b>EPMHV-DTHA-GA-P04</b></div>
+    </div>
+
+  </main>
+</div>
+
+</body>
+</html>
