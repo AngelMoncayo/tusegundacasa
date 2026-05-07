@@ -1,0 +1,868 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>La Casa de Sammy — Vilcabamba</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;1,400&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --moss:#2f3a2c;       /* tomado del fondo del logo */
+    --moss-deep:#232b21;
+    --fern:#4a5e3a;
+    --bone:#ece4d3;
+    --cream:#f5efe1;
+    --gold:#a98a4d;       /* tomado del "Sammy" del logo */
+    --gold-soft:#c8a766;
+    --clay:#b56a3f;
+    --ink:#1a1c16;
+    --line:rgba(47,58,44,0.18);
+    --display:'Fraunces', 'Cormorant Garamond', Georgia, serif;
+    --display-it:'Cormorant Garamond', Georgia, serif;
+    --sans:'Inter', system-ui, sans-serif;
+    --mono: ui-monospace, 'SF Mono', Menlo, monospace;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:var(--cream);color:var(--ink);font-family:var(--sans);}
+</style>
+</head>
+<body>
+<div id="root"></div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+<script type="text/babel" src="shared.jsx"></script>
+
+<script type="text/babel">
+const { useState } = React;
+
+// ---------- NAV ----------
+function Nav() {
+  const [lang, setLang] = useState('ES');
+  return (
+    <header style={{
+      position:'sticky', top:0, zIndex:50,
+      display:'flex', alignItems:'center', justifyContent:'space-between',
+      padding:'14px 48px', background:'rgba(245,239,225,0.92)', backdropFilter:'blur(10px)',
+      borderBottom:'1px solid var(--line)',
+    }}>
+      <a href="#" style={{display:'flex',alignItems:'center',gap:12,textDecoration:'none',color:'var(--ink)'}}>
+        <img src="logo.png" alt="" style={{width:44,height:52,objectFit:'cover',borderRadius:6}}/>
+        <div style={{lineHeight:1}}>
+          <div style={{fontFamily:'var(--display)',fontSize:18,letterSpacing:-0.3}}>La Casa de Sammy</div>
+          <div style={{fontFamily:'var(--display-it)',fontStyle:'italic',fontSize:12,color:'var(--gold)',marginTop:2}}>tu segunda casa</div>
+        </div>
+      </a>
+      <nav style={{display:'flex',gap:34,fontSize:13,color:'var(--moss)'}}>
+        <a href="#sobre" style={navL}>Sobre</a>
+        <a href="#habitaciones" style={navL}>Habitaciones</a>
+        <a href="#experiencias" style={navL}>Experiencias</a>
+        <a href="#spa" style={navL}>Spa</a>
+        <a href="#aves" style={navL}>Aves</a>
+        <a href="#comida" style={navL}>Comida</a>
+        <a href="#galeria" style={navL}>Galería</a>
+        <a href="#ubicacion" style={navL}>Cómo llegar</a>
+      </nav>
+      <div style={{display:'flex',gap:14,alignItems:'center'}}>
+        <div style={{fontFamily:'var(--mono)',fontSize:11,letterSpacing:1.5,cursor:'pointer'}}>
+          <span onClick={()=>setLang('ES')} style={{color:lang==='ES'?'var(--moss)':'rgba(0,0,0,0.4)',fontWeight:lang==='ES'?600:400}}>ES</span>
+          <span style={{margin:'0 6px',opacity:0.4}}>·</span>
+          <span onClick={()=>setLang('EN')} style={{color:lang==='EN'?'var(--moss)':'rgba(0,0,0,0.4)',fontWeight:lang==='EN'?600:400}}>EN</span>
+        </div>
+        <a href="#reservar" style={{
+          background:'var(--moss)', color:'var(--cream)', padding:'11px 22px',
+          borderRadius:999, fontSize:12, fontWeight:500, textDecoration:'none',letterSpacing:0.3,
+        }}>Reservar</a>
+      </div>
+    </header>
+  );
+}
+const navL = {color:'inherit',textDecoration:'none'};
+
+// ---------- HERO ----------
+function Hero() {
+  return (
+    <section style={{padding:'72px 48px 90px', background:'var(--cream)'}}>
+      <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:56,alignItems:'center',maxWidth:1320,margin:'0 auto'}}>
+        <div>
+          <div style={{display:'flex',alignItems:'center',gap:12,marginBottom:28}}>
+            <span style={{width:36,height:1,background:'var(--gold)'}}/>
+            <span style={{fontFamily:'var(--mono)',fontSize:11,letterSpacing:2.5,textTransform:'uppercase',color:'var(--gold)'}}>
+              Vilcabamba · Loja · Ecuador
+            </span>
+          </div>
+          <h1 style={{
+            fontFamily:'var(--display)',fontWeight:400,fontSize:96,lineHeight:0.97,margin:0,
+            letterSpacing:-2.5,color:'var(--moss)',textWrap:'balance',
+          }}>
+            Tu segunda casa<br/>en el <em style={{fontFamily:'var(--display-it)',color:'var(--gold)',fontStyle:'italic',fontWeight:400}}>Valle Sagrado</em>.
+          </h1>
+          <p style={{fontSize:18,lineHeight:1.65,marginTop:32,color:'rgba(26,28,22,0.78)',maxWidth:500}}>
+            Una casa de campo para grupos familiares en el corazón del Valle de la Longevidad. Cinco habitaciones, huerto propio, cabalgatas al Mandango y todo el silencio del sur del Ecuador.
+          </p>
+          <div style={{display:'flex',gap:12,marginTop:40}}>
+            <a href="#reservar" style={btnPrimary}>Ver disponibilidad →</a>
+            <a href="#sobre" style={btnGhost}>Conocer la casa</a>
+          </div>
+          <div style={{display:'flex',gap:48,marginTop:64,paddingTop:28,borderTop:'1px solid var(--line)'}}>
+            {[['1.500','m.s.n.m.'],['18-22°','todo el año'],['5','habitaciones'],['12','huéspedes']].map(([n,l])=>(
+              <div key={l}>
+                <div style={{fontFamily:'var(--display)',fontSize:30,color:'var(--moss)',lineHeight:1}}>{n}</div>
+                <div style={{fontFamily:'var(--mono)',fontSize:10,letterSpacing:1.5,textTransform:'uppercase',color:'rgba(26,28,22,0.55)',marginTop:6}}>{l}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div style={{position:'relative',height:660}}>
+          <div style={{position:'absolute',top:0,right:0,width:'88%',height:480,borderRadius:'50% 50% 8px 8px / 60% 60% 8px 8px',overflow:'hidden'}}>
+            <Photo src="piscina-vista-1.jpeg" label="piscina con vista al cerro Mandango" ratio="auto" style={{height:'100%'}}/>
+          </div>
+          <div style={{position:'absolute',bottom:0,left:0,width:'62%',height:290,overflow:'hidden',boxShadow:'0 14px 32px rgba(0,0,0,0.18)',borderRadius:4}}>
+            <Photo src="comida-arroz-amarillo.jpeg" label="casa entre las montañas" ratio="auto" style={{height:'100%'}}/>
+          </div>
+          <div style={{position:'absolute',bottom:30,right:-8,width:230,padding:'20px 22px',background:'var(--moss)',color:'var(--cream)',borderRadius:4,boxShadow:'0 14px 32px rgba(0,0,0,0.22)'}}>
+            <div style={{fontFamily:'var(--display-it)',fontStyle:'italic',fontSize:17,lineHeight:1.4}}>
+              "Vilcabamba — donde se le suman años a la vida."
+            </div>
+            <div style={{fontFamily:'var(--mono)',fontSize:9,letterSpacing:1.5,textTransform:'uppercase',color:'var(--gold-soft)',marginTop:12}}>
+              Dicho del valle
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+const btnPrimary = {background:'var(--moss)',color:'var(--cream)',padding:'16px 26px',borderRadius:999,fontSize:13,fontWeight:500,textDecoration:'none',display:'inline-block'};
+const btnGhost   = {background:'transparent',color:'var(--moss)',border:'1px solid var(--moss)',padding:'15px 26px',borderRadius:999,fontSize:13,fontWeight:500,textDecoration:'none',display:'inline-block'};
+
+// ---------- MARQUEE ----------
+function Marquee() {
+  const ANDEAN = `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40'><path d='M20 4 L36 20 L20 36 L4 20 Z' fill='none' stroke='%23ece4d3' stroke-width='0.5' opacity='0.3'/></svg>")`;
+  return (
+    <div style={{background:'var(--moss)',color:'var(--cream)',padding:'24px 0',overflow:'hidden',backgroundImage:ANDEAN}}>
+      <div style={{display:'flex',gap:48,fontFamily:'var(--display-it)',fontStyle:'italic',fontSize:26,whiteSpace:'nowrap'}}>
+        {Array(2).fill(0).map((_,i)=>(
+          <React.Fragment key={i}>
+            <span>· Valle Sagrado</span>
+            <span style={{color:'var(--gold-soft)'}}>· Aire puro</span>
+            <span>· Río Chamba</span>
+            <span style={{color:'var(--gold-soft)'}}>· Cerro Mandango</span>
+            <span>· Cascada El Palto</span>
+            <span style={{color:'var(--gold-soft)'}}>· Café de Loja</span>
+            <span>· Bosque nublado</span>
+            <span style={{color:'var(--gold-soft)'}}>· Mesa larga</span>
+          </React.Fragment>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+// ---------- SOBRE ----------
+function Sobre() {
+  return (
+    <section id="sobre" style={{padding:'120px 48px',background:'var(--cream)',maxWidth:1320,margin:'0 auto'}}>
+      <div style={{display:'grid',gridTemplateColumns:'1fr 1.5fr',gap:80}}>
+        <div style={{position:'sticky',top:100,alignSelf:'start'}}>
+          <div style={{fontFamily:'var(--mono)',fontSize:11,letterSpacing:2.5,textTransform:'uppercase',color:'var(--gold)',marginBottom:18}}>
+            01 / Sobre la casa
+          </div>
+          <h2 style={{fontFamily:'var(--display)',fontWeight:400,fontSize:54,lineHeight:1,margin:0,color:'var(--moss)',letterSpacing:-1}}>
+            Una casa con<br/>raíces hondas.
+          </h2>
+          <Photo src="pic3.jpeg" label="cabaña entre el jardín" ratio="4/5" style={{marginTop:32, borderRadius:4}}/>
+        </div>
+        <div style={{paddingTop:24}}>
+          <p style={{fontFamily:'var(--display)',fontSize:26,lineHeight:1.4,fontWeight:400,margin:'0 0 32px',color:'var(--moss)',textWrap:'pretty'}}>
+            La Casa de Sammy abre sus puertas en uno de los rincones más tranquilos del Ecuador, declarado <em style={{color:'var(--gold)'}}>Rincón Mágico</em> en 2026.
+          </p>
+          <p style={{fontSize:16,lineHeight:1.75,color:'rgba(26,28,22,0.78)',marginBottom:18}}>
+            La casa fue levantada en piedra del río y madera local, pensada para albergar a familias que viajan juntas. Cada habitación mira a un costado distinto del valle, y todas comparten el patio central, el comedor abierto y la huerta.
+          </p>
+          <p style={{fontSize:16,lineHeight:1.75,color:'rgba(26,28,22,0.78)',marginBottom:36}}>
+            Lo que sirvieron en la mesa esta mañana viene del huerto. Los recorridos los hacen guías que crecieron en el valle. Y el wifi, prometemos, llega a casi todos los rincones — aunque mejor lo apagas un rato.
+          </p>
+          <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:18,marginTop:32}}>
+            {[
+              ['Huerto propio','Verduras, hierbas y huevos del día.'],
+              ['Familias','Cuartos comunicados y zonas para niños.'],
+              ['Guías locales','Cabalgatas, senderismo y termales.'],
+              ['Mesa larga','Cenas familiares con productos del huerto.'],
+            ].map(([t,d])=>(
+              <div key={t} style={{padding:'20px 22px',background:'var(--bone)',borderRadius:4}}>
+                <div style={{fontFamily:'var(--display)',fontSize:20,color:'var(--moss)',marginBottom:6}}>{t}</div>
+                <div style={{fontSize:13,lineHeight:1.5,color:'rgba(26,28,22,0.7)'}}>{d}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ---------- HABITACIONES ----------
+function Habitaciones() {
+  const rooms = [
+    { name:'Mandango', tag:'Suite familiar', cap:'4 huéspedes', price:'$120', src:'pic4.jpeg', pos:'center' },
+    { name:'Wilco',    tag:'Doble matrim.',  cap:'2 huéspedes', price:'$85',  src:'pic12.jpeg', pos:'center' },
+    { name:'Chamba',   tag:'Familiar',       cap:'3 huéspedes', price:'$95',  src:'pic10.jpeg', pos:'center' },
+    { name:'Palto',    tag:'Doble',          cap:'2 huéspedes', price:'$80',  src:'pic8.jpeg', pos:'center' },
+  ];
+  return (
+    <section id="habitaciones" style={{padding:'110px 0 110px 48px',background:'var(--bone)'}}>
+      <div style={{maxWidth:1320,margin:'0 auto'}}>
+        <div style={{display:'flex',justifyContent:'space-between',alignItems:'flex-end',paddingRight:48,marginBottom:48}}>
+          <div>
+            <div style={{fontFamily:'var(--mono)',fontSize:11,letterSpacing:2.5,textTransform:'uppercase',color:'var(--gold)',marginBottom:14}}>
+              02 / Habitaciones
+            </div>
+            <h2 style={{fontFamily:'var(--display)',fontWeight:400,fontSize:60,lineHeight:0.95,margin:0,color:'var(--moss)',letterSpacing:-1}}>
+              Cinco cuartos,<br/>nombrados como el valle.
+            </h2>
+          </div>
+          <div style={{display:'flex',gap:8}}>
+            <button style={{width:44,height:44,borderRadius:'50%',border:'1px solid var(--moss)',background:'transparent',color:'var(--moss)',cursor:'pointer',fontSize:16}}>←</button>
+            <button style={{width:44,height:44,borderRadius:'50%',border:'none',background:'var(--moss)',color:'var(--cream)',cursor:'pointer',fontSize:16}}>→</button>
+          </div>
+        </div>
+        <div style={{display:'flex',gap:24,overflowX:'auto',paddingBottom:8,paddingRight:48}}>
+          {rooms.map(r=>(
+            <div key={r.name} style={{flex:'0 0 300px',background:'var(--cream)',borderRadius:6,overflow:'hidden'}}>
+              <Photo src={r.src} label={r.name} ratio="3/4" position={r.pos}/>
+              <div style={{padding:'20px 22px'}}>
+                <div style={{fontFamily:'var(--mono)',fontSize:10,letterSpacing:1.8,textTransform:'uppercase',color:'var(--gold)'}}>{r.tag}</div>
+                <h3 style={{fontFamily:'var(--display)',fontWeight:400,fontSize:30,margin:'6px 0 0',color:'var(--moss)'}}>{r.name}</h3>
+                <div style={{display:'flex',justifyContent:'space-between',alignItems:'center',marginTop:18,paddingTop:16,borderTop:'1px solid var(--line)'}}>
+                  <span style={{fontSize:12,color:'rgba(26,28,22,0.6)'}}>{r.cap}</span>
+                  <span style={{fontFamily:'var(--display)',fontSize:20,color:'var(--moss)'}}>{r.price}<span style={{fontSize:11,color:'rgba(26,28,22,0.5)'}}> /noche</span></span>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ---------- RESPIRA · DESCANSA · VUELVE ----------
+function Respira() {
+  const [step, setStep] = useState(0);
+  React.useEffect(() => {
+    const id = setInterval(() => setStep(s => (s + 1) % 3), 3800);
+    return () => clearInterval(id);
+  }, []);
+  const words = ['respira', 'descansa', 'vuelve'];
+  const subs  = [
+    'el aire del valle a 1500 m',
+    'no hay prisa en Vilcabamba',
+    'a ti, a los tuyos, a la tierra',
+  ];
+  return (
+    <section style={{
+      background:'var(--moss-deep)', color:'var(--cream)',
+      padding:'140px 48px', position:'relative', overflow:'hidden',
+    }}>
+      <div style={{
+        position:'absolute', inset:0, display:'flex', alignItems:'center', justifyContent:'center',
+        pointerEvents:'none',
+      }}>
+        <div style={{
+          width:520, height:520, borderRadius:'50%',
+          background:'radial-gradient(circle, rgba(201,167,102,0.12) 0%, transparent 70%)',
+          animation:'breathe 7.6s ease-in-out infinite',
+        }}/>
+      </div>
+      <div style={{maxWidth:1200, margin:'0 auto', textAlign:'center', position:'relative'}}>
+        <div style={{fontFamily:'var(--mono)',fontSize:11,letterSpacing:3,textTransform:'uppercase',color:'var(--gold-soft)',marginBottom:48}}>
+          · una pausa ·
+        </div>
+        <div style={{display:'flex',justifyContent:'center',gap:48,flexWrap:'wrap',marginBottom:56}}>
+          {words.map((w,i) => (
+            <div key={w} style={{
+              fontFamily:'var(--display-it)', fontStyle:'italic',
+              fontSize: step===i ? 96 : 64,
+              fontWeight:400,
+              color: step===i ? 'var(--gold)' : 'rgba(236,228,211,0.28)',
+              transition:'all 1.2s cubic-bezier(.4,0,.2,1)',
+              letterSpacing:-2,
+              lineHeight:1,
+            }}>
+              {w}
+            </div>
+          ))}
+        </div>
+        <div style={{
+          fontFamily:'var(--display)', fontSize:22, fontWeight:400,
+          color:'rgba(236,228,211,0.7)', minHeight:32,
+          transition:'opacity .6s',
+        }} key={step}>
+          <span style={{animation:'fadeIn 1.2s ease-out'}}>{subs[step]}</span>
+        </div>
+        <div style={{display:'flex',justifyContent:'center',gap:10,marginTop:56}}>
+          {words.map((_,i)=>(
+            <span key={i} style={{
+              width: step===i?28:8, height:2,
+              background: step===i?'var(--gold)':'rgba(236,228,211,0.25)',
+              transition:'all .6s',
+            }}/>
+          ))}
+        </div>
+      </div>
+      <style>{`
+        @keyframes breathe {
+          0%, 100% { transform: scale(0.85); opacity: 0.5; }
+          50%      { transform: scale(1.15); opacity: 1;   }
+        }
+        @keyframes fadeIn {
+          from { opacity: 0; transform: translateY(8px); }
+          to   { opacity: 1; transform: translateY(0); }
+        }
+      `}</style>
+    </section>
+  );
+}
+
+// ---------- EXPERIENCIAS ----------
+function Experiencias() {
+  const items = [
+    ['01','Cabalgatas','Rutas guiadas al cerro Mandango y la cascada El Palto.','pic9.jpeg'],
+    ['02','Senderismo','Reserva Rumi Wilco, doce senderos entre bosque nublado.','jardin-camino.jpeg'],
+    ['03','Ping-pong & juegos','Área techada con mesa de ping-pong y espacio para los niños.','area-juegos.jpeg'],
+    ['04','Gazebo & hamacas','Una siesta bajo el techo de teja, mirando los cerros.','gazebo.jpeg'],
+  ];
+  return (
+    <section id="experiencias" style={{padding:'120px 48px',background:'var(--moss-deep)',color:'var(--cream)'}}>
+      <div style={{maxWidth:1320,margin:'0 auto'}}>
+        <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:48,alignItems:'end',marginBottom:64}}>
+          <div>
+            <div style={{fontFamily:'var(--mono)',fontSize:11,letterSpacing:2.5,textTransform:'uppercase',color:'var(--gold-soft)',marginBottom:14}}>
+              03 / Para hacer
+            </div>
+            <h2 style={{fontFamily:'var(--display)',fontWeight:400,fontSize:64,lineHeight:1,margin:0,letterSpacing:-1,color:'var(--cream)'}}>
+              El valle es tu<br/>segunda casa.
+            </h2>
+          </div>
+          <p style={{fontSize:16,lineHeight:1.7,opacity:0.8,margin:0}}>
+            Cada mañana hay una propuesta nueva en la pizarra del comedor. Te apuntas si quieres, o te quedas leyendo en la hamaca.
+          </p>
+        </div>
+        <div style={{display:'grid',gridTemplateColumns:'repeat(4, 1fr)',gap:20}}>
+          {items.map(([n,t,d,src])=>(
+            <div key={n}>
+              <Photo src={src} label={t} ratio="3/4"/>
+              <div style={{paddingTop:18}}>
+                <div style={{fontFamily:'var(--mono)',fontSize:11,color:'var(--gold-soft)',marginBottom:8}}>{n}</div>
+                <h4 style={{fontFamily:'var(--display)',fontWeight:400,fontSize:24,margin:'0 0 8px',color:'var(--cream)'}}>{t}</h4>
+                <p style={{fontSize:13,lineHeight:1.6,opacity:0.72,margin:0}}>{d}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ---------- PISCINA ----------
+function Piscina() {
+  return (
+    <section id="piscina" style={{padding:'110px 48px',background:'var(--cream)'}}>
+      <div style={{maxWidth:1320,margin:'0 auto'}}>
+        <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:48,alignItems:'end',marginBottom:40}}>
+          <div>
+            <div style={{fontFamily:'var(--mono)',fontSize:11,letterSpacing:2.5,textTransform:'uppercase',color:'var(--gold)',marginBottom:14}}>
+              04 / Piscina & jacuzzi
+            </div>
+            <h2 style={{fontFamily:'var(--display)',fontWeight:400,fontSize:54,color:'var(--moss)',margin:0,letterSpacing:-1}}>
+              Refrescarse<br/>mirando los cerros.
+            </h2>
+          </div>
+          <p style={{fontSize:16,lineHeight:1.7,color:'rgba(26,28,22,0.72)',margin:0,maxWidth:480}}>
+            Piscina de adultos, una pequeña para niños, y un jacuzzi rodeado de palmas — todo abierto al valle. El agua se calienta con el sol del Valle Sagrado.
+          </p>
+        </div>
+        <div style={{display:'grid',gridTemplateColumns:'2fr 1fr 1fr',gridAutoRows:280,gap:16}}>
+          <div style={{gridRow:'span 2'}}><Photo src="piscina-vista-1.jpeg" label="piscina con vista al cerro" ratio="auto" style={{height:'100%'}}/></div>
+          <div><Photo src="piscina-jacuzzi-1.jpeg" label="jacuzzi entre palmas" ratio="auto" style={{height:'100%'}}/></div>
+          <div><Photo src="piscina-jacuzzi-2.jpeg" label="jacuzzi" ratio="auto" style={{height:'100%'}}/></div>
+          <div><Photo src="comida-arroz-amarillo.jpeg" label="piscina y los cerros" ratio="auto" style={{height:'100%'}}/></div>
+          <div><Photo src="piscina-vista-2.jpeg" label="piscina y jardín" ratio="auto" style={{height:'100%'}}/></div>
+          <div><Photo src="piscina-panoramica.jpeg" label="vista panorámica" ratio="auto" style={{height:'100%'}}/></div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ---------- SPA ----------
+function Spa() {
+  const servicios = [
+    { num:'01', name:'Masajes', desc:'Relajante, descontracturante y de piedras calientes — con aceites de hierbas del valle.', icon:'~' },
+    { num:'02', name:'Baños de cajón', desc:'Tradición andina: vapor de eucalipto y plantas medicinales en cabina de madera.', icon:'▢' },
+    { num:'03', name:'Turco', desc:'Sauna húmedo de vapor para abrir poros, soltar el cuerpo y respirar profundo.', icon:'≋' },
+    { num:'04', name:'Rituales en pareja', desc:'Sesiones para dos, con té de plantas y silencio frente al valle.', icon:'◉' },
+  ];
+  return (
+    <section id="spa" style={{padding:'120px 48px',background:'var(--moss-deep)',color:'var(--cream)',position:'relative',overflow:'hidden'}}>
+      <div style={{maxWidth:1320,margin:'0 auto',position:'relative'}}>
+        <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:48,alignItems:'end',marginBottom:64}}>
+          <div>
+            <div style={{fontFamily:'var(--mono)',fontSize:11,letterSpacing:2.5,textTransform:'uppercase',color:'var(--gold-soft)',marginBottom:14}}>
+              05 / Spa & bienestar
+            </div>
+            <h2 style={{fontFamily:'var(--display)',fontWeight:400,fontSize:54,margin:0,letterSpacing:-1,lineHeight:1}}>
+              Para que el cuerpo<br/>también descanse.
+            </h2>
+          </div>
+          <p style={{fontSize:16,lineHeight:1.7,color:'rgba(236,228,211,0.75)',margin:0,maxWidth:480}}>
+            Vilcabamba es famoso por su agua, su aire y sus plantas. Lo aprovechamos en un pequeño spa propio — agendable durante tu estadía, con previo aviso.
+          </p>
+        </div>
+        <div style={{display:'grid',gridTemplateColumns:'repeat(4,1fr)',gap:24}}>
+          {servicios.map(s => (
+            <div key={s.name} style={{
+              padding:'36px 28px',
+              background:'rgba(236,228,211,0.04)',
+              border:'1px solid rgba(201,167,102,0.22)',
+              borderRadius:6,
+            }}>
+              <div style={{fontFamily:'var(--display-it)',fontStyle:'italic',fontSize:42,color:'var(--gold)',marginBottom:18,lineHeight:1}}>
+                {s.icon}
+              </div>
+              <div style={{fontFamily:'var(--mono)',fontSize:10,letterSpacing:1.8,textTransform:'uppercase',color:'var(--gold-soft)',marginBottom:8}}>
+                {s.num}
+              </div>
+              <h3 style={{fontFamily:'var(--display)',fontWeight:400,fontSize:24,margin:'0 0 10px',color:'var(--cream)'}}>{s.name}</h3>
+              <p style={{fontSize:13,lineHeight:1.6,color:'rgba(236,228,211,0.7)',margin:0}}>{s.desc}</p>
+            </div>
+          ))}
+        </div>
+        <div style={{marginTop:48,padding:'24px 32px',borderTop:'1px solid rgba(201,167,102,0.25)',display:'flex',justifyContent:'space-between',alignItems:'center',gap:24,flexWrap:'wrap'}}>
+          <div style={{fontFamily:'var(--display-it)',fontStyle:'italic',fontSize:20,color:'rgba(236,228,211,0.85)'}}>
+            "Reserva con un día de anticipación. Algunos rituales toman su tiempo."
+          </div>
+          <a href="#reservar" style={{...btnGhost,color:'var(--cream)',borderColor:'var(--gold)'}}>Agendar sesión →</a>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ---------- AVES ----------
+function Aves() {
+  const aves = [
+    ['Mockingbird','Sinsonte','https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgIlDFafCBSRr84kNZAUWy-LTGaotcV3Z-QhiMsMvl1JZGSB44HjEeSm6o9LTXdarRTflkDdP6iV8OVft06Bxo5IQOAHGEu0jhyphenhyphenlK6l7NKKYirasRyAPg3z9qOvaFvOLdnOfY-Zd7Ut1_VvUQZrzJ7l4yxyzZP0tUB9joWLxa_WPl_ie2jpRk4Mhs0Xz0xZ/w800/5X0A6079.jpeg'],
+    ['Saffron Finch','Pinzón azafrán','https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgGX51IvGCZMcVoxWv-2gQ_amXlEiKvw8x6GPoL10O-EOAtW0tuBSpOdeDmCzRHi8l0GPSD1Rh9xMFdjoUxlHGl8gOW9_3iqHuQUkTJXLzf_eMNrGCIqfe_e4ugOfqROY5Gm4Pzgfjh-raptItgqvQsIF36nCIvU3-xmLvniCRI-ECgwmsBsXpCygwIiEDN/w800/5X0A6137.jpeg'],
+    ['Eared Dove','Tórtola orejuda','https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhMa4OwODYcjo7s_FTjcUbK95fNwJktkp4IXmsZ5zl29CkSZU5-jOaD0yhxRP0twTJRFhmvr9Gf5ktLtF48MNZJE1Zt18J-mOLCjskFNp-cgnC2SJORCySCQmgmSF2eUHiggwZrWNrjAi9IAQqsoG0s2SlqfjEuG-6WFtC-7kvytXw5gy76ELMp7wDmv5WT/w800/5X0A6308.jpeg'],
+    ['Pygmy Owl','Mochuelo','https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhX9AN1xHUhTxm-w11x0BNHVuJ_WXmLXrny5acRcxuUjsFckwWr1Dh1sek4Ps7nY2hp2B0F_wgU6MbVFnMrQZHwdcorf8ZO10FnrkxaeEODIyJHNd0oHnu9xoZXrtZGiTVycqJMf-v-gsEu5Gs5LOo9pBRPD85st0GUkC8zCqwv0_Zk38d2plJpzLx0LHB5/w800/5X0A6418.jpeg'],
+    ['Groove-billed Ani','Garrapatero piquiestriado','https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgeTRtS20CLtiULS9pw1N3lURlfWl1UQ2fB2CE8e3-DdzYHto2JEicyCf3Z4fkGBCOpygv-DMXlEdgONcRLykGukhIa6gqtVrSrCXEmsky8GS8mKreRPmCCjBKTa8kJBV7AJ1jHj3Uh1oHEvqc9nEAj4EruUBjUwsG3K8v8YwelK-x7DvWNm-8L8Q_zrOQz/w800/5X0A6519.jpeg'],
+    ['Golden Grosbeak','Picogordo amarillo','https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj-zrKO4wBfx_fidnmXrMx4soBkNSluE0vM3uIYa7KnkHFFRKz7WN_fMDEQtSdVVHq9HsJaD8cxMMeyGKqzdVgSfACBXiSBlQwXVmQfwQrE9nP58ajn_L7Z68P5EyILzZJmsZ386rgl7w_sANAORy1oNvWNmeN_Ldu-1ZVIHwzY7t0j97GDpEQjkVfxPT-Q/w800/5X0A6791.jpeg'],
+    ['Hornero','Hornero','https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhywgP_bOBBYpJAYF_kqghVN6D1oACP47ohB1b_sZ8S78vN8yj82cJrFCB-v3ohrddBO8UuuzH-2Hry6O-WZbu_YCu3c-GQh6DY1YU8Fi4kKHLreee3r510UnsRnWUfqZbSJLFLEEdovfbjRIVN7ZzIVYNk5forV-MhPJb5eZ5zgeG0fVMW6psoNSdL_jV5/w800/5X0A6700.jpeg'],
+    ['Amazilea Hummingbird','Colibrí amazilia','https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjFQ6J5KyPM8Zp5K2jgY_D6xyMp1iYrU3YCFydwhWsM5ZkxGElvJV5qcdAaYbAFtPxzwbDHzjN5_qy6yMCECabPLKfz2WtfTsMoPcQVsokaaUjf28wG4J3y87zjDdgdt3JY0-q51R6Iiwo4gpJ0QApPbU52Q0YbxrySwODMzZU4G6b5zwnooB_zRojT1my4/w800/5X0A6934.jpeg'],
+    ['Motmot','Momoto','https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgq2bMehOVM-chNBaqXD-n9dUQamepNJsFu8WBCvScf5TeYlYSe2VvgI0YVt16M2ENoyJFz7AvtKVKF18hb5JFtBasA9Kb-ZZ5bJ3xgtyQLScpRmXK9o436KYJqBSYro7wsDlLsCoua9Yck-lX3zBRfeIzyesRL_Nz7Y8moEboBMzH6_RYJB5SHVJsn2DgM/w800/5X0A7275.jpeg'],
+    ['Hepatic Tanager','Tángara hepática','https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiYYuIvh-QhyphenhyphenVWrWbK4bOP-dNHqaiVhtrjG3KxYT5ualmduSsAFgePdKrDuFf12LuLclRrklKTf18P0mprW-WWb2GylGlpHp05Jc3ofNGph1-1inK0T-6u4KiHzbmdeCThKY09bLfsWomrZtQbSYsKf9TkNkf4tP1Fb1BY92bR7ZwoySKiTUS2yNElaWIj7/w800/5X0A8031.jpeg'],
+    ['Yellow-tailed Oriole','Oropéndola coliamarilla','https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhhqDSO9EnetwwlB02IUUfgQEM_8GGJ20BSJUbysZFs3d5CkhJyVlRpkaAc2SpSLcuUJcsHvwgQobfUTAI7ARRBX_5NUxDGzVpLwl-jXxDGXQ-G6OTk3uQJ0Z4uvHfa3GVBSU0PFjGaPme7sgvPKQn3TbgnQCNI3hdNCpoJVRwMF3xYb7EZ0lYb4EcGfQwD/w800/5X0A8242.jpeg'],
+    ['Hook-billed Kite','Milano picogarfio','https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi0ybNmGBGJQvghW3h810FRR-2okq-tFVFX-WUZKBAb0E9hSW1PKLBvmoKP0fHlsXkBDlN0n3IvYrOLTi1GltxHttteBKSA1Icv7citrOFJz1QdTLnAdMjW0OWWCl5YBh6CluPuhRE8HbZhMs2fjFPnerlq6dvNeXBAJaTLK2rmOuZVO8VZXa6k4ImrwaXB/w800/5X0A9548.jpeg'],
+  ];
+  return (
+    <section id="aves" style={{padding:'120px 48px',background:'var(--cream)'}}>
+      <div style={{maxWidth:1320,margin:'0 auto'}}>
+        <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:48,alignItems:'end',marginBottom:56}}>
+          <div>
+            <div style={{fontFamily:'var(--mono)',fontSize:11,letterSpacing:2.5,textTransform:'uppercase',color:'var(--gold)',marginBottom:14}}>
+              07 / Aves del valle
+            </div>
+            <h2 style={{fontFamily:'var(--display)',fontWeight:400,fontSize:54,color:'var(--moss)',margin:0,letterSpacing:-1,lineHeight:1}}>
+              Las que cantan<br/>al amanecer.
+            </h2>
+          </div>
+          <p style={{fontSize:16,lineHeight:1.7,color:'rgba(26,28,22,0.72)',margin:0,maxWidth:480}}>
+            Vilcabamba es paraíso de avistadores. Estas fotografías fueron tomadas en nuestra propiedad por el ornitólogo <strong>Bill Tice</strong>. Trae binoculares — el café de la mañana viene con concierto.
+          </p>
+        </div>
+        <div style={{display:'grid',gridTemplateColumns:'repeat(4,1fr)',gap:14}}>
+          {aves.map(([en,es,src]) => (
+            <div key={en} style={{position:'relative',aspectRatio:'3/4',borderRadius:4,overflow:'hidden',background:'var(--bone)'}}>
+              <img src={src} alt={en} loading="lazy" style={{width:'100%',height:'100%',objectFit:'cover',display:'block'}}/>
+              <div style={{position:'absolute',inset:0,background:'linear-gradient(180deg,transparent 50%,rgba(35,43,33,0.85) 100%)'}}/>
+              <div style={{position:'absolute',bottom:14,left:14,right:14,color:'var(--cream)'}}>
+                <div style={{fontFamily:'var(--display-it)',fontStyle:'italic',fontSize:18,lineHeight:1.1}}>{es}</div>
+                <div style={{fontFamily:'var(--mono)',fontSize:9,letterSpacing:1.5,textTransform:'uppercase',color:'var(--gold-soft)',marginTop:4}}>{en}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+        <div style={{marginTop:40,padding:'24px 32px',background:'var(--bone)',borderRadius:6,display:'flex',justifyContent:'space-between',alignItems:'center',gap:24,flexWrap:'wrap'}}>
+          <div style={{fontFamily:'var(--display-it)',fontStyle:'italic',fontSize:18,color:'var(--moss)'}}>
+            Fotografías: Bill Tice — <span style={{fontFamily:'var(--mono)',fontStyle:'normal',fontSize:11,letterSpacing:1,textTransform:'uppercase',color:'var(--gold)'}}>Various Oregon Birding Piks</span>
+          </div>
+          <a href="https://variousoregonbirdingpiks.blogspot.com/2025/01/angels-birds.html" target="_blank" rel="noreferrer" style={btnGhost}>
+            Ver el reportaje completo →
+          </a>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ---------- COMIDA ----------
+function Comida() {
+  const platos = [
+    { src:'comida-trucha-2.jpeg',     name:'Trucha al romero',     desc:'Trucha local con puré de papa nativa y romero del huerto.' },
+    { src:'comida-pasta-pesto.jpeg',  name:'Pasta al pesto',       desc:'Spaghetti con pesto de albahaca del huerto y pan casero.' },
+    { src:'comida-higaditos.jpeg',    name:'Higaditos salteados',  desc:'Salteados con pimientos, sobre arroz blanco y ensalada.' },
+    { src:'comida-pasta-bolognesa.jpeg', name:'Pasta bolognesa',  desc:'Fettuccine con salsa lenta de carne y tomate fresco.' },
+    { src:'comida-trucha-1.jpeg',     name:'Trucha dorada',        desc:'Trucha de los criaderos del valle, con yuca y romero.' },
+  ];
+  return (
+    <section id="comida" style={{padding:'120px 48px',background:'var(--bone)'}}>
+      <div style={{maxWidth:1320,margin:'0 auto'}}>
+        <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:48,alignItems:'end',marginBottom:56}}>
+          <div>
+            <div style={{fontFamily:'var(--mono)',fontSize:11,letterSpacing:2.5,textTransform:'uppercase',color:'var(--gold)',marginBottom:14}}>
+              08 / De la huerta a la mesa
+            </div>
+            <h2 style={{fontFamily:'var(--display)',fontWeight:400,fontSize:54,color:'var(--moss)',margin:0,letterSpacing:-1,lineHeight:1}}>
+              Comer en casa,<br/>como en casa.
+            </h2>
+          </div>
+          <p style={{fontSize:16,lineHeight:1.7,color:'rgba(26,28,22,0.72)',margin:0,maxWidth:480}}>
+            Cocina casera, sin pretensiones — trucha del valle, vegetales del huerto, café de Loja. Pedimos lo que te gusta y lo preparamos para todos.
+          </p>
+        </div>
+        <div style={{display:'grid',gridTemplateColumns:'repeat(3,1fr)',gap:24}}>
+          {platos.map(p => (
+            <div key={p.name} style={{background:'var(--cream)',borderRadius:6,overflow:'hidden'}}>
+              <Photo src={p.src} label={p.name} ratio="4/3"/>
+              <div style={{padding:'20px 22px 22px'}}>
+                <h3 style={{fontFamily:'var(--display)',fontWeight:400,fontSize:22,margin:'0 0 6px',color:'var(--moss)'}}>{p.name}</h3>
+                <p style={{fontSize:13,lineHeight:1.6,color:'rgba(26,28,22,0.65)',margin:0}}>{p.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+        <div style={{marginTop:48,padding:'28px 32px',background:'var(--moss)',color:'var(--cream)',borderRadius:6,display:'flex',justifyContent:'space-between',alignItems:'center',gap:24,flexWrap:'wrap'}}>
+          <div>
+            <div style={{fontFamily:'var(--display-it)',fontStyle:'italic',fontSize:22,lineHeight:1.3}}>
+              "El desayuno está incluido. La cena, si la pides la noche anterior."
+            </div>
+            <div style={{fontFamily:'var(--mono)',fontSize:10,letterSpacing:1.5,textTransform:'uppercase',color:'var(--gold-soft)',marginTop:10}}>
+              Vegetariano · Sin gluten · Para niños
+            </div>
+          </div>
+          <a href="#reservar" style={{...btnGhost,color:'var(--cream)',borderColor:'var(--cream)'}}>Pedir menú →</a>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ---------- GALERÍA ----------
+function Galeria() {
+  return (
+    <section id="galeria" style={{padding:'110px 48px',background:'var(--cream)'}}>
+      <div style={{maxWidth:1320,margin:'0 auto'}}>
+        <div style={{display:'flex',justifyContent:'space-between',alignItems:'flex-end',marginBottom:40}}>
+          <div>
+            <div style={{fontFamily:'var(--mono)',fontSize:11,letterSpacing:2.5,textTransform:'uppercase',color:'var(--gold)',marginBottom:14}}>09 / Galería</div>
+            <h2 style={{fontFamily:'var(--display)',fontWeight:400,fontSize:54,color:'var(--moss)',margin:0,letterSpacing:-1}}>
+              La casa por dentro y por fuera.
+            </h2>
+          </div>
+        </div>
+        <div style={{display:'grid',gridTemplateColumns:'repeat(4, 1fr)',gridAutoRows:180,gap:16}}>
+          <div style={{gridColumn:'span 2',gridRow:'span 2'}}><Photo src="jardin-soleado.jpeg" label="jardín soleado" ratio="auto" style={{height:'100%'}}/></div>
+          <div><Photo src="cabana-arco.jpeg" label="cabaña con arco" ratio="auto" style={{height:'100%'}}/></div>
+          <div><Photo src="pic4.jpeg" label="cuarto principal" ratio="auto" style={{height:'100%'}}/></div>
+          <div><Photo src="jardin-palmeras.jpeg" label="jardín con palmeras" ratio="auto" style={{height:'100%'}}/></div>
+          <div><Photo src="jardin-azul.jpeg" label="jardín cielo azul" ratio="auto" style={{height:'100%'}}/></div>
+          <div style={{gridColumn:'span 2'}}><Photo src="pic1.jpeg" label="vista del valle" ratio="auto" style={{height:'100%'}}/></div>
+          <div><Photo src="pic3.jpeg" label="cabaña entre el jardín" ratio="auto" style={{height:'100%'}}/></div>
+          <div><Photo src="jardin-camino.jpeg" label="camino de piedra" ratio="auto" style={{height:'100%'}}/></div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ---------- TESTIMONIOS ----------
+function Testimonios() {
+  const t = [
+    { q:'La casa es hermosa, pero lo que de verdad nos llevamos fue el trato. Sammy y su gente nos cuidaron como familia.', a:'Familia Vásquez', l:'Quito · Mar 2026', i:'V' },
+    { q:'Vinimos con tres generaciones. Mi mamá de 78 y los nietos de 5. Todos encontraron su rincón. Volveremos.',          a:'Familia Mendoza',  l:'Cuenca · Feb 2026', i:'M' },
+  ];
+  return (
+    <section style={{padding:'110px 48px',background:'var(--moss)',color:'var(--cream)'}}>
+      <div style={{maxWidth:1320,margin:'0 auto'}}>
+        <div style={{display:'flex',justifyContent:'space-between',alignItems:'baseline',marginBottom:56}}>
+          <h2 style={{fontFamily:'var(--display)',fontWeight:400,fontSize:54,lineHeight:1,margin:0,letterSpacing:-1,color:'var(--cream)'}}>
+            Lo que cuentan<br/>nuestras familias.
+          </h2>
+          <div style={{fontFamily:'var(--mono)',fontSize:11,letterSpacing:2.5,textTransform:'uppercase',color:'var(--gold-soft)'}}>10 / Reseñas</div>
+        </div>
+        <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:32}}>
+          {t.map(x=>(
+            <div key={x.a} style={{padding:32,background:'rgba(255,255,255,0.06)',borderRadius:6}}>
+              <p style={{fontFamily:'var(--display-it)',fontStyle:'italic',fontSize:24,lineHeight:1.4,margin:0}}>"{x.q}"</p>
+              <div style={{marginTop:24,display:'flex',alignItems:'center',gap:14}}>
+                <div style={{width:42,height:42,borderRadius:'50%',background:'var(--gold)',color:'var(--moss-deep)',display:'flex',alignItems:'center',justifyContent:'center',fontFamily:'var(--display)',fontSize:18,fontWeight:500}}>{x.i}</div>
+                <div>
+                  <div style={{fontSize:14,fontWeight:500}}>{x.a}</div>
+                  <div style={{fontFamily:'var(--mono)',fontSize:10,letterSpacing:1.2,opacity:0.6}}>{x.l}</div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ---------- RESERVA ----------
+function Reserva() {
+  return (
+    <section id="reservar" style={{padding:'110px 48px',background:'var(--cream)'}}>
+      <div style={{maxWidth:1320,margin:'0 auto',background:'var(--bone)',borderRadius:8,padding:'72px 56px',display:'grid',gridTemplateColumns:'1.2fr 1fr',gap:56,alignItems:'center'}}>
+        <div>
+          <div style={{fontFamily:'var(--mono)',fontSize:11,letterSpacing:2.5,textTransform:'uppercase',color:'var(--gold)',marginBottom:14}}>11 / Reservas</div>
+          <h2 style={{fontFamily:'var(--display)',fontWeight:400,fontSize:54,lineHeight:1,margin:0,color:'var(--moss)',letterSpacing:-1}}>
+            Aparta tus días<br/>en el valle.
+          </h2>
+          <p style={{fontSize:16,lineHeight:1.7,color:'rgba(26,28,22,0.75)',marginTop:24,maxWidth:440}}>
+            Reservas mínimas de dos noches. Tarifas familiares para grupos de más de seis. Te respondemos en menos de 24 horas, sin intermediarios.
+          </p>
+          <div style={{marginTop:32,display:'flex',gap:14,flexWrap:'wrap'}}>
+            <a href="https://wa.me/593993714307?text=Hola%20Sammy%2C%20quisiera%20reservar%20en%20La%20Casa%20de%20Sammy." target="_blank" rel="noreferrer" style={{...btnPrimary,background:'var(--moss)'}}>WhatsApp +593 99 371 4307</a>
+            <a href="mailto:clasomel@gmail.com?subject=Reserva%20La%20Casa%20de%20Sammy" style={btnGhost}>clasomel@gmail.com</a>
+          </div>
+        </div>
+        <div style={{background:'var(--cream)',padding:28,borderRadius:6,boxShadow:'0 8px 24px rgba(0,0,0,0.06)'}}>
+          <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:14,marginBottom:14}}>
+            {[['Llegada','15 jun'],['Salida','20 jun']].map(([l,v])=>(
+              <div key={l} style={{padding:'12px 14px',border:'1px solid var(--line)',borderRadius:4}}>
+                <div style={{fontFamily:'var(--mono)',fontSize:9,letterSpacing:1.5,textTransform:'uppercase',color:'rgba(26,28,22,0.55)'}}>{l}</div>
+                <div style={{fontFamily:'var(--display)',fontSize:18,color:'var(--moss)',marginTop:4}}>{v}</div>
+              </div>
+            ))}
+          </div>
+          <div style={{padding:'12px 14px',border:'1px solid var(--line)',borderRadius:4,marginBottom:18}}>
+            <div style={{fontFamily:'var(--mono)',fontSize:9,letterSpacing:1.5,textTransform:'uppercase',color:'rgba(26,28,22,0.55)'}}>Huéspedes</div>
+            <div style={{fontFamily:'var(--display)',fontSize:18,color:'var(--moss)',marginTop:4}}>2 adultos · 2 niños</div>
+          </div>
+          <button style={{width:'100%',padding:'16px',background:'var(--moss)',color:'var(--cream)',border:'none',borderRadius:999,fontSize:13,fontWeight:500,cursor:'pointer'}}>
+            Consultar disponibilidad →
+          </button>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ---------- UBICACIÓN ----------
+function Ubicacion() {
+  return (
+    <section id="ubicacion" style={{padding:'110px 48px',background:'var(--cream)'}}>
+      <div style={{maxWidth:1320,margin:'0 auto',display:'grid',gridTemplateColumns:'1fr 1.2fr',gap:48,alignItems:'center'}}>
+        <div>
+          <div style={{fontFamily:'var(--mono)',fontSize:11,letterSpacing:2.5,textTransform:'uppercase',color:'var(--gold)',marginBottom:14}}>12 / Cómo llegar</div>
+          <h2 style={{fontFamily:'var(--display)',fontWeight:400,fontSize:54,lineHeight:1,margin:0,color:'var(--moss)',letterSpacing:-1}}>
+            En el corazón<br/>del valle.
+          </h2>
+          <div style={{marginTop:32,display:'grid',gap:18}}>
+            {[
+              ['Desde Loja','41 km — 1 h en auto, o $1-4 en bus desde la terminal terrestre.'],
+              ['Aeropuerto más cercano','Catamayo (LOH) · 75 km. Recibimos huéspedes con previo aviso.'],
+              ['Dirección','Vía Yamburara, sector San José · Vilcabamba · Loja · Ecuador'],
+            ].map(([t,d])=>(
+              <div key={t} style={{paddingBottom:18,borderBottom:'1px solid var(--line)'}}>
+                <div style={{fontFamily:'var(--display)',fontSize:20,color:'var(--moss)',marginBottom:6}}>{t}</div>
+                <div style={{fontSize:14,lineHeight:1.6,color:'rgba(26,28,22,0.72)'}}>{d}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div style={{position:'relative',borderRadius:8,overflow:'hidden',boxShadow:'0 12px 36px rgba(0,0,0,0.12)',aspectRatio:'4/3'}}>
+          <iframe
+            src="https://www.google.com/maps?q=Vilcabamba,Loja,Ecuador&z=13&output=embed"
+            style={{border:0,width:'100%',height:'100%',display:'block'}}
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            title="Mapa Vilcabamba"
+          />
+          <div style={{position:'absolute',top:18,left:18,padding:'10px 14px',background:'rgba(35,43,33,0.92)',color:'var(--cream)',borderRadius:4,pointerEvents:'none'}}>
+            <div style={{fontFamily:'var(--mono)',fontSize:9,letterSpacing:1.8,textTransform:'uppercase',opacity:0.85,color:'var(--gold-soft)'}}>4°15'S · 79°13'W</div>
+            <div style={{fontFamily:'var(--display-it)',fontStyle:'italic',fontSize:18,marginTop:2}}>Vilcabamba · Loja</div>
+          </div>
+          <a href="https://www.google.com/maps/place/Vilcabamba,+Ecuador" target="_blank" rel="noreferrer" style={{position:'absolute',bottom:14,right:14,padding:'8px 14px',background:'var(--cream)',color:'var(--moss)',fontFamily:'var(--mono)',fontSize:10,letterSpacing:1.5,textTransform:'uppercase',textDecoration:'none',borderRadius:3}}>
+            Abrir en Google Maps →
+          </a>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ---------- SOUVENIRS ----------
+function Souvenirs() {
+  const items = [
+    { name:'Café de Marianita', price:'$12', desc:'Tostado de altura 1500m, molido o en grano. Bolsa 250g.', img:'photos/cafe-marianita.png' },
+    { name:'Miel de la huerta', price:'$10', desc:'Miel cruda de abejas del valle. Frasco 350g.', img:'https://images.unsplash.com/photo-1558642452-9d2a7deb7f62?w=600&h=600&fit=crop' },
+    { name:'Tejido en lana', price:'$45', desc:'Bufanda o ruana hecha a mano por artesanas locales.', img:'photos/tejido-lana.png' },
+    { name:'Horchata lojana', price:'$8', desc:'Mezcla de 21 hierbas medicinales del valle, en bolsita.', img:'photos/horchata-lojana.png' },
+    { name:'Jabón artesanal', price:'$6', desc:'Con avena, miel y aceites de plantas del huerto.', img:'https://images.unsplash.com/photo-1600857544200-b2f666a9a2ec?w=600&h=600&fit=crop' },
+    { name:'Postal de aves', price:'$4', desc:'Postal con foto del Momoto del valle, por Bill Tice.', img:'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgq2bMehOVM-chNBaqXD-n9dUQamepNJsFu8WBCvScf5TeYlYSe2VvgI0YVt16M2ENoyJFz7AvtKVKF18hb5JFtBasA9Kb-ZZ5bJ3xgtyQLScpRmXK9o436KYJqBSYro7wsDlLsCoua9Yck-lX3zBRfeIzyesRL_Nz7Y8moEboBMzH6_RYJB5SHVJsn2DgM/w800/5X0A7275.jpeg' },
+  ];
+  return (
+    <section id="souvenirs" style={{padding:'120px 48px',background:'var(--bone)'}}>
+      <div style={{maxWidth:1320,margin:'0 auto'}}>
+        <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:48,alignItems:'end',marginBottom:56}}>
+          <div>
+            <div style={{fontFamily:'var(--mono)',fontSize:11,letterSpacing:2.5,textTransform:'uppercase',color:'var(--gold)',marginBottom:14}}>
+              13 / Souvenirs
+            </div>
+            <h2 style={{fontFamily:'var(--display)',fontWeight:400,fontSize:54,color:'var(--moss)',margin:0,letterSpacing:-1,lineHeight:1}}>
+              Llévate un<br/>pedazo del valle.
+            </h2>
+          </div>
+          <p style={{fontSize:16,lineHeight:1.7,color:'rgba(26,28,22,0.72)',margin:0,maxWidth:480}}>
+            Pequeñas cosas hechas en Vilcabamba — para recordar la casa, regalar, o seguir tomando café del sur en tu cocina.
+          </p>
+        </div>
+        <div style={{display:'grid',gridTemplateColumns:'repeat(3,1fr)',gap:20}}>
+          {items.map(i => (
+            <div key={i.name} style={{background:'var(--cream)',borderRadius:6,overflow:'hidden',border:'1px solid var(--line)'}}>
+              <div style={{aspectRatio:'4/3',background:'var(--bone)',overflow:'hidden'}}>
+                <img src={i.img} alt={i.name} loading="lazy" style={{width:'100%',height:'100%',objectFit:'cover',display:'block'}}/>
+              </div>
+              <div style={{padding:'24px 26px'}}>
+                <div style={{display:'flex',justifyContent:'space-between',alignItems:'baseline',marginBottom:8}}>
+                  <h3 style={{fontFamily:'var(--display)',fontWeight:400,fontSize:22,margin:0,color:'var(--moss)'}}>{i.name}</h3>
+                  <span style={{fontFamily:'var(--mono)',fontSize:13,color:'var(--gold)',fontWeight:500}}>{i.price}</span>
+                </div>
+                <p style={{fontSize:13,lineHeight:1.6,color:'rgba(26,28,22,0.65)',margin:0}}>{i.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+        <div style={{marginTop:40,padding:'24px 32px',background:'var(--moss)',color:'var(--cream)',borderRadius:6,display:'flex',justifyContent:'space-between',alignItems:'center',gap:24,flexWrap:'wrap'}}>
+          <div style={{fontFamily:'var(--display-it)',fontStyle:'italic',fontSize:18}}>
+            "Disponibles en recepción durante tu estadía."
+          </div>
+          <a href="https://wa.me/593993714307?text=Hola%2C%20me%20interesan%20los%20souvenirs%20de%20La%20Casa%20de%20Sammy." target="_blank" rel="noreferrer" style={{...btnGhost,color:'var(--cream)',borderColor:'var(--gold)'}}>Preguntar por WhatsApp →</a>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ---------- FAQ ----------
+function FAQ() {
+  const [open,setOpen]=useState(0);
+  const qs = [
+    ['¿Cuál es la estadía mínima?','Dos noches en temporada regular, tres en feriados.'],
+    ['¿Reciben mascotas?','Por el cuidado de la huerta y los huéspedes, no recibimos mascotas.'],
+    ['¿Incluye desayuno?','Sí. Desayuno casero con productos del huerto, café de Loja y pan recién horneado.'],
+    ['¿Hay wifi?','Sí, en todas las áreas comunes y en la mayoría de habitaciones.'],
+    ['¿Pueden organizar excursiones?','Coordinamos cabalgatas, caminatas guiadas a Mandango y Rumi Wilco, y traslados a las termales.'],
+    ['¿Aceptan tarjeta?','Sí. También transferencia bancaria local y efectivo.'],
+  ];
+  return (
+    <section style={{padding:'110px 48px',background:'var(--bone)'}}>
+      <div style={{maxWidth:980,margin:'0 auto'}}>
+        <div style={{textAlign:'center',marginBottom:56}}>
+          <div style={{fontFamily:'var(--mono)',fontSize:11,letterSpacing:2.5,textTransform:'uppercase',color:'var(--gold)',marginBottom:14}}>14 / Preguntas</div>
+          <h2 style={{fontFamily:'var(--display)',fontWeight:400,fontSize:54,lineHeight:1,margin:0,color:'var(--moss)',letterSpacing:-1}}>
+            Lo que la gente nos pregunta.
+          </h2>
+        </div>
+        <div>
+          {qs.map(([q,a],i)=>(
+            <div key={q} style={{borderBottom:'1px solid var(--line)'}}>
+              <button onClick={()=>setOpen(open===i?-1:i)} style={{
+                width:'100%',padding:'24px 0',background:'transparent',border:'none',cursor:'pointer',
+                display:'flex',justifyContent:'space-between',alignItems:'center',textAlign:'left',
+                fontFamily:'var(--display)',fontSize:22,color:'var(--moss)',
+              }}>
+                <span>{q}</span>
+                <span style={{fontFamily:'var(--display)',fontSize:24,color:'var(--gold)',transition:'transform .2s',transform:open===i?'rotate(45deg)':'rotate(0)'}}>+</span>
+              </button>
+              {open===i && (
+                <div style={{paddingBottom:24,fontSize:15,lineHeight:1.7,color:'rgba(26,28,22,0.78)',maxWidth:680}}>{a}</div>
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ---------- FOOTER ----------
+function Footer() {
+  return (
+    <footer style={{background:'var(--moss-deep)',color:'var(--cream)',padding:'72px 48px 32px'}}>
+      <div style={{maxWidth:1320,margin:'0 auto'}}>
+        <div style={{display:'grid',gridTemplateColumns:'2fr 1fr 1fr 1fr',gap:56,marginBottom:56}}>
+          <div>
+            <img src="logo.png" alt="" style={{width:120,height:140,objectFit:'cover',borderRadius:8,marginBottom:18}}/>
+            <p style={{fontSize:13,lineHeight:1.7,opacity:0.7,maxWidth:280,margin:0}}>
+              Vilcabamba — Loja — Ecuador.<br/>El Valle de la Longevidad,<br/>Rincón Mágico del Ecuador.
+            </p>
+          </div>
+          {[['Visitar',[['Habitaciones','#habitaciones'],['Experiencias','#experiencias'],['Spa','#spa'],['Galería','#galeria']]],
+            ['Reservar',[['Disponibilidad','#reservar'],['WhatsApp','https://wa.me/593993714307'],['Preguntas','#faq'],['Cómo llegar','#ubicacion']]],
+            ['Contacto',[['WhatsApp +593 99 371 4307','https://wa.me/593993714307?text=Hola%20Sammy%2C%20quisiera%20reservar%20en%20La%20Casa%20de%20Sammy.'],['clasomel@gmail.com','mailto:clasomel@gmail.com?subject=Reserva%20La%20Casa%20de%20Sammy'],['Instagram','https://instagram.com'],['Vilcabamba · Loja','#ubicacion']]]].map(([h,items])=>(
+            <div key={h}>
+              <div style={{fontFamily:'var(--mono)',fontSize:10,letterSpacing:2,textTransform:'uppercase',color:'var(--gold-soft)',marginBottom:16}}>{h}</div>
+              <ul style={{listStyle:'none',padding:0,margin:0,display:'flex',flexDirection:'column',gap:10}}>
+                {items.map(([label,href])=><li key={label} style={{fontSize:13,opacity:0.85}}><a href={href} target={href.startsWith('http')||href.startsWith('mailto')?'_blank':undefined} rel="noreferrer" style={{color:'inherit',textDecoration:'none'}}>{label}</a></li>)}
+              </ul>
+            </div>
+          ))}
+        </div>
+        <div style={{paddingTop:24,borderTop:'1px solid rgba(236,228,211,0.15)',display:'flex',justifyContent:'space-between',fontFamily:'var(--mono)',fontSize:10,letterSpacing:1.5,opacity:0.5}}>
+          <span>© 2026 La Casa de Sammy · tu segunda casa</span>
+          <span>Hecho con cariño en el sur del Ecuador</span>
+        </div>
+      </div>
+    </footer>
+  );
+}
+
+function App() {
+  return (
+    <>
+      <Nav/>
+      <Hero/>
+      <Respira/>
+      <Marquee/>
+      <Sobre/>
+      <Habitaciones/>
+      <Experiencias/>
+      <Piscina/>
+      <Spa/>
+      <Aves/>
+      <Comida/>
+      <Galeria/>
+      <Testimonios/>
+      <Reserva/>
+      <Ubicacion/>
+      <Souvenirs/>
+      <FAQ/>
+      <Footer/>
+    </>
+  );
+}
+ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+</script>
+</body>
+</html>
